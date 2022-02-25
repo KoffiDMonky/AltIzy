@@ -7,7 +7,8 @@ export function UserContextProvider(props){
 
     const signUp = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd)
     const signIn = (email, pwd) => signInWithEmailAndPassword(auth, email, pwd)
-    
+
+
     //Partie utilisateur (création, identitfication de l'utilisateur)
     const [currentUser, setCurrentUser] = useState();
     const [loadingData, setLoadindData] = useState(true);
@@ -34,21 +35,33 @@ export function UserContextProvider(props){
         if(modal === "signIn"){ //Si modal est strictement égale à "signIn", on passe signInModal à true pour afficher la modale de connection
             setModalState({
                 signUpModal: false,
-                signInModal: true
+                signInModal: true,
+                resetModal: false
             })
         }
 
         if(modal === "signUp"){ //Si modal est strictement égale à "signUp", on passe signUpModal à true pour afficher la modale d'inscription
             setModalState({
                 signUpModal: true,
-                signInModal: false
+                signInModal: false,
+                resetModal: false
             })
         }
+
+        if(modal === "reset"){ //Si modal est strictement égale à "reset", on passe resetModal à true pour afficher la modale de réinitialisation du MDP
+            setModalState({
+                signUpModal: false,
+                signInModal: false,
+                resetModal: true
+            })
+        }
+
 
         if(modal === "close"){ //Si modal est strictement égale à "close", on ferme la modale qui est affichée
             setModalState({
                 signUpModal: false,
-                signInModal: false
+                signInModal: false,
+                resetModal: false
             })
         }
     }

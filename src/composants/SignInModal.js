@@ -10,11 +10,9 @@ function SignInModal() {
   const [validation, setValidation] = useState("");
   const inputs = useRef([]); //useRef permet de récupérer nos inputs
   const addInputs = (el) => {
-
     // On ajout nos inputs courant (et leurs valeurs) dans notre tableau contenu dans useRef
     if (el && !inputs.current.includes(el)) {
       inputs.current.push(el);
-
     }
   };
 
@@ -25,27 +23,25 @@ function SignInModal() {
     e.preventDefault();
 
     try {
-      await signIn( //On récupère le l'email et le mot de passe
+      await signIn(
+        //On récupère le l'email et le mot de passe
         inputs.current[0].value,
         inputs.current[1].value
-      )
+      );
 
       //On vide les inputs du formulaire
-      setValidation("")
-      toggleModals("close")
-      navigate("/private/private-home")
-
+      setValidation("");
+      toggleModals("close");
+      navigate("/private/private-home");
     } catch (err) {
-      
-        setValidation("Oups, l'email et/ou le mot de passe n'est pas correct !");
-
+      setValidation("Oups, l'email et/ou le mot de passe n'est pas correct !");
     }
   };
 
   const closeModal = () => {
-    setValidation("")
-    toggleModals("close")
-  }
+    setValidation("");
+    toggleModals("close");
+  };
 
   return (
     <>
@@ -66,11 +62,7 @@ function SignInModal() {
                   <button onClick={closeModal} className="btn-close"></button>
                 </div>
                 <div className="modal-body">
-                  <form
-                    // ref={formRef}
-                    onSubmit={handleForm}
-                    className="sign-in-form"
-                  >
+                  <form onSubmit={handleForm} className="sign-in-form">
                     <div className="mb-3">
                       <label htmlFor="signInEmail" className="form-label">
                         Adresse mail
@@ -97,9 +89,12 @@ function SignInModal() {
                         className="form-control"
                         id="signInPwd"
                       />
+                      <button className="btn" onClick={() => toggleModals("reset")}>
+                        Mot de passe oublié ?
+                      </button>
                       <p className="text-danger mt-1">{validation}</p>
                     </div>
-                    <button className="btn btn-primary">Connexion</button>
+                    <button className="btn btn-primary w-100">Connexion</button>
                   </form>
                 </div>
               </div>

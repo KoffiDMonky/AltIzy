@@ -2,7 +2,7 @@
 import './App.css';
 import {Routes, Route} from "react-router-dom"
 import Home from "./pages/Home"
-import Navbar from './composants/Navbar';
+import Navbar from './composants/Navbar/Navbar';
 import SignUpModal from './composants/SignUpModal';
 import SignInModal from './composants/SignInModal';
 import Private from './pages/Private/Private';

@@ -7,7 +7,7 @@ function Home() {
 
   return (
   <div className="container p-5">
-      <h1 className="display-3 text-light text-center">{currentUser ? "Salut l'artiste ! 🤓 " : "Bonjour, veuillez vous inscrire ou vous connecter 👋"} </h1>
+      <h1 className="display-3 text-center">{currentUser ? "Bienvenu ! " : "Bonjour, veuillez vous inscrire ou vous connecter 👋"} </h1>
   </div>
   );
 }
