@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
-import { UserContext } from "../context/userContext";
+import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
+import "./Modals.css";
 
 function SignInModal() {
   const { modalState, toggleModals, signIn } = useContext(UserContext); //On instantie useContext
@@ -46,7 +47,7 @@ function SignInModal() {
   return (
     <>
       {modalState.signInModal && (
-        <div className="position-fixed top-0 vw-100 vh-100">
+        <div className="position-fixed top-0 vw-100 vh-100 modal-open">
           <div
             onClick={closeModal}
             className="w-100 h-100 bg-dark bg-opacity-75"

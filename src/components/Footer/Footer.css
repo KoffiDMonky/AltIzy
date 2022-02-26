@@ -1,0 +1,20 @@
+.footer {
+    background-color: #9B79B5;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.menu-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-footer .navbar-brand {
+margin-right: 0;
+}

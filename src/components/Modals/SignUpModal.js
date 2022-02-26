@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
-import { UserContext } from "../context/userContext";
-import { useNavigate } from "react-router-dom"
+import { UserContext } from "../../context/userContext";
+import { useNavigate } from "react-router-dom";
+import "./Modals.css";
 
 function SignUpModal() {
   
@@ -72,7 +73,7 @@ function SignUpModal() {
   return (
     <>
       {modalState.signUpModal && (
-        <div className="position-fixed top-0 vw-100 vh-100">
+        <div className="position-fixed top-0 vw-100 vh-100 modal-open">
           <div
             onClick={closeModal}
             className="w-100 h-100 bg-dark bg-opacity-75"

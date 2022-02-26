@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase-config";
-import logo from "./Logo_Altizy.png"
-
+import logo from "./../../images/Logo_Altizy.png";
+import Button from "../buttons/Button";
 
 function Navbar() {
   const { toggleModals } = useContext(UserContext);
@@ -27,33 +27,41 @@ function Navbar() {
 
   return (
     <nav className="navbar navbarlight bg-light px-4">
+      <div>
       <Link to="/private/private-home" className="navbar-brand">
-        <img style={{height: "54px"}} src ={logo} alt="logo" />
+        <img style={{ height: "86px" }} src={logo} alt="logo" />
       </Link>
 
+        {!currentUser && <Button label="Présentation"/>}
+      
+        {!currentUser && <Button label="Équipe"/>}
+
+        {!currentUser && <Button label="Avis"/>}
+
+        {!currentUser && <Button label="Contact"/>}
+
+      </div>
+
       <div>
+
         {!currentUser && (
-          <button
-            onClick={() => toggleModals("signUp")}
-            className="btn btn-warning"
-          >
+          <button onClick={() => toggleModals("signUp")} className="btn ">
             S'inscrire
           </button>
         )}
         {!currentUser && (
-          <button
-            onClick={() => toggleModals("signIn")}
-            className="btn btn-warning ms-2"
-          >
+          <button onClick={() => toggleModals("signIn")} className="btn ms-2">
             Se connecter
           </button>
         )}
         {currentUser && (
-          <button onClick={logOut} className="btn btn-danger ms-2">
-            {" "}
-            Se déconnecter
-          </button>
-        )}{" "}
+          <>
+            <Button label="Mon compte"/>
+            <button onClick={logOut} className="btn  ms-2">
+              Se déconnecter
+            </button>
+          </>
+        )}
       </div>
     </nav>
   );
