@@ -25,6 +25,7 @@
 h1{
   font-size: 68px;
   font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .btn{
@@ -41,3 +42,15 @@ h1{
   width: 2px;
   background-color: #f1f1f1;
 }
+
+.btn-primary {
+  color: #fff;
+  background-color: #9B79B5;
+  border-color: #9B79B5;
+}
+
+.btn-outline-warning {
+  color: #F4974B;
+  border-color: #F4974B;
+}
+

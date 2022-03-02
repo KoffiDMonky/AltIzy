@@ -22,3 +22,4 @@ export const auth = getAuth(app);
 
 //Export de la méthode DB firestore
 export const db = getFirestore(app);
+

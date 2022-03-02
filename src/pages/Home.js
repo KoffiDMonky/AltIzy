@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import Carouselavis from "../components/carousel/CarouselAvis";
+import Formcontact from "../components/Form/FormContact";
 import { UserContext } from "../context/userContext";
 import "./Home.css";
 
@@ -44,6 +46,10 @@ function Home() {
           </p>
         </div>
       </div>
+
+      <Carouselavis />
+      <Formcontact />
+
 
       {/* <h1 className="display-3 text-center">{currentUser ? "Bienvenu ! " : "Bonjour, veuillez vous inscrire ou vous connecter 👋"} </h1> */}
     </div>
