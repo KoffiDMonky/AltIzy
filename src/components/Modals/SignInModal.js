@@ -2,9 +2,12 @@ import React, { useContext, useRef, useState } from "react";
 import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
 import "./Modals.css";
+import Googlesigninbutton from "../buttons/GoogleSignInButton";
+// import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 function SignInModal() {
   const { modalState, toggleModals, signIn } = useContext(UserContext); //On instantie useContext
+  console.log(UserContext);
 
   const navigate = useNavigate(); //On instantie useNavigate
 
@@ -30,7 +33,7 @@ function SignInModal() {
         inputs.current[1].value
       );
 
-      //On vide les inputs du formulaire
+      //On vide les inputs du formulaire,ferme la modal et on redirige vers la page d'accueil privée
       setValidation("");
       toggleModals("close");
       navigate("/private/private-home");
@@ -90,13 +93,17 @@ function SignInModal() {
                         className="form-control"
                         id="signInPwd"
                       />
-                      <button className="btn" onClick={() => toggleModals("reset")}>
+                      <button
+                        className="btn"
+                        onClick={() => toggleModals("reset")}
+                      >
                         Mot de passe oublié ?
                       </button>
                       <p className="text-danger mt-1">{validation}</p>
                     </div>
                     <button className="btn btn-primary w-100">Connexion</button>
                   </form>
+                  <Googlesigninbutton />
                 </div>
               </div>
             </div>

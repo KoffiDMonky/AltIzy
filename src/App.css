@@ -49,8 +49,20 @@ h1{
   border-color: #9B79B5;
 }
 
+.btn-primary:hover {
+  color: #fff;
+  background-color: #8448b3;
+  border-color: #8448b3;
+}
+
 .btn-outline-warning {
   color: #F4974B;
+  border-color: #F4974B;
+}
+
+.btn-check:active+.btn-outline-warning, .btn-check:checked+.btn-outline-warning, .btn-outline-warning.active, .btn-outline-warning.dropdown-toggle.show, .btn-outline-warning:active {
+  color: #fff;
+  background-color: #F4974B;
   border-color: #F4974B;
 }
 
