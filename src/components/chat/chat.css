@@ -1,0 +1,36 @@
+:root {
+    --main-violet: #9B79B5;
+    --main-blue: #2B4999;
+    --main-orange: #F4974B;
+  }
+
+.chat-list {
+    /* background-color: blue; */
+    /* display: block; */
+    height: 100%;
+    width: 25%;
+    border-right: solid 1px var(--main-violet);
+    box-shadow: 4px 0px 20px -10px rgba(0, 0, 0, 0.30);
+    list-style: none;
+}
+
+.chat-list-header{
+    padding: 20px;
+    background-color: var(--main-violet) ;
+    text-align: center;
+}
+
+.chat-item{
+    display: flex;
+    border-bottom: solid 1px var(--main-violet) ;
+    align-items: center;
+    gap: 10px;
+    padding: 18px;
+}
+
+.profile-photo img{
+    /* background-color: red; */
+    height: 58px;
+    width: 58px;
+    border-radius: 50%;
+}

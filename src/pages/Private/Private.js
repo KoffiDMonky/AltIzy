@@ -12,9 +12,9 @@ function Private(){
 
 
     return (
-        <div className="container">
+        <>
             <Outlet />
-        </div>
+        </>
     );
 }
 
