@@ -7,8 +7,6 @@ import Googlesigninbutton from "../buttons/GoogleSignInButton";
 
 function SignInModal() {
   const { modalState, toggleModals, signIn } = useContext(UserContext); //On instantie useContext
-  console.log(UserContext);
-
   const navigate = useNavigate(); //On instantie useNavigate
 
   const [validation, setValidation] = useState("");

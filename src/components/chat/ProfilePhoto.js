@@ -13,7 +13,5 @@ function Profilephoto(props) {
 
 export default Profilephoto;
 
-import React from 'react';
-
 
 

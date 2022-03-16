@@ -2,35 +2,156 @@
     --main-violet: #9B79B5;
     --main-blue: #2B4999;
     --main-orange: #F4974B;
-  }
+}
 
 .chat-list {
-    /* background-color: blue; */
-    /* display: block; */
-    height: 100%;
+    height: 530px;
     width: 25%;
     border-right: solid 1px var(--main-violet);
     box-shadow: 4px 0px 20px -10px rgba(0, 0, 0, 0.30);
     list-style: none;
 }
 
-.chat-list-header{
+.list-item {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+
+.chat-list-header {
     padding: 20px;
-    background-color: var(--main-violet) ;
+    background-color: var(--main-violet);
     text-align: center;
 }
 
-.chat-item{
+.chat-item {
     display: flex;
-    border-bottom: solid 1px var(--main-violet) ;
+    border-bottom: solid 1px var(--main-violet);
     align-items: center;
     gap: 10px;
     padding: 18px;
 }
 
-.profile-photo img{
+.chat-item:hover {
+    background-color: #9b79b515;
+    font-weight: 600;
+}
+
+.chat-item-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.last-message {
+    font-weight: 300;
+}
+
+
+.profile-photo img {
     /* background-color: red; */
     height: 58px;
     width: 58px;
     border-radius: 50%;
+}
+
+.chat-window {
+    height: 400px;
+    width: 350px;
+    border: solid 2px var(--main-violet);
+    position: relative;
+    left: 300%;
+    top: -89%;
+    border-radius: 5px 5px 0 0;
+    background-color: #fdfdfd;
+
+}
+
+.close-chat-window{
+    position: absolute;
+    left: 88%;
+    top: 2%;
+    height: 31px;
+    width: 21px;
+    padding: 0;
+    border: none;
+    background-color: #fdfdfd;
+    color: var(--main-violet);
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.chat-window-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 2px 5px;
+    border-bottom: solid 1px var(--main-violet);
+    height: 15%;
+    border-radius: 5px 5px 0 0;
+
+}
+
+.chat-window-header .profile-photo img {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+}
+
+.message-zone {
+    height: 71%;
+    border-bottom: solid 1px var(--main-violet);
+    overflow-y: scroll;
+}
+
+.message-item{
+    /* background-color: #F4974B; */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 28%;
+    padding: 5px 5px;
+}
+
+.message{
+    background-color: var(--main-violet);
+    border-radius: 6px;
+    padding: 5px 15px;
+}
+
+.message-item .profile-photo img{
+
+    height: 40px;
+    width: 40px;
+}
+
+.text-zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-zone input {
+    margin-top: 2px;
+    width: 74%;
+    height: 49px;
+    border: none;
+    padding-left: 5px;
+    font-size: 20px;
+}
+
+.text-zone input:focus {
+    border: none;
+}
+
+.text-zone button {
+    background-color: var(--main-violet);
+    color: #fdfdfd;
+    margin-top: 1px;
+    margin-right: 2px;
+    /* font-family: NE PAS OUBLIER ; */
+}
+
+.text-zone button:hover {
+    background-color: #7d46a7;
+    /* font-family: NE PAS OUBLIER ; */
 }
