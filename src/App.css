@@ -1,3 +1,10 @@
+:root {
+  --main-violet: #9B79B5;
+  --main-violet-hover: #8448b3;
+  --main-blue: #2B4999;
+  --main-orange: #F4974B;
+}
+
 .App {
   text-align: center;
 }
@@ -45,24 +52,24 @@ h1{
 
 .btn-primary {
   color: #fff;
-  background-color: #9B79B5;
-  border-color: #9B79B5;
+  background-color: var(--main-violet);
+  border-color: var(--main-violet);
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #8448b3;
-  border-color: #8448b3;
+  background-color: var(--main-violet-hover);
+  border-color: var(--main-violet-hover);
 }
 
 .btn-outline-warning {
-  color: #F4974B;
-  border-color: #F4974B;
+  color: var(--main-orange);
+  border-color: var(--main-orange);
 }
 
 .btn-check:active+.btn-outline-warning, .btn-check:checked+.btn-outline-warning, .btn-outline-warning.active, .btn-outline-warning.dropdown-toggle.show, .btn-outline-warning:active {
   color: #fff;
-  background-color: #F4974B;
-  border-color: #F4974B;
+  background-color: var(--main-orange);
+  border-color: var(--main-orange);
 }
 

@@ -7,7 +7,6 @@ import { CardSwiper } from "react-card-rotate-swiper";
 // };
 
 function Randomcard(props) {
-
   const users = props.users;
   const handleSwipe = props.handleSwipe;
   console.log(users);
@@ -22,7 +21,7 @@ function Randomcard(props) {
       contents={
         <div
           className="card-background"
-          style={{ backgroundImage: "url(" +  user.photo + ")" }}
+          style={{ backgroundImage: "url(" + user.photo + ")" }}
         >
           <span>{user.name}</span>
         </div>
@@ -30,7 +29,10 @@ function Randomcard(props) {
     />
   ));
 
-  return <div className="card-container">{cardStack}</div>;
+  return <div className="card-container">
+    {cardStack}
+    <p>Plus d'offres, reviens plustard !</p>
+    </div>;
 }
 
 export default Randomcard;

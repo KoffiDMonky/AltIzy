@@ -57,7 +57,7 @@ function Navbar() {
         {currentUser && (
           <>
             <Button label="Mon compte"/>
-            <button onClick={logOut} className="btn  ms-2">
+            <button onClick={logOut} className="btn ms-2 text-danger">
               Se déconnecter
             </button>
           </>

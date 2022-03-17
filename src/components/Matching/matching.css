@@ -14,15 +14,26 @@
     width: 240px;
     height: 350px;
     margin: 35px auto;
+    border-radius: 6px;
+}
+
+.card-container p {
+position: relative;
+top: 50%;
+font-size: 30px;
+text-align: center;
+color: rgb(196, 192, 192);
+z-index: 0;
 
 }
 
 .card {
     position: absolute;
     top: 0;
+    z-index: 100;
     width: 240px;
     height: 350px;
-    margin: 50px auto;
+    margin: 35px auto;
     /* border: solid 1px var(--main-violet); */
     border-radius: 6px;
     cursor: pointer;
