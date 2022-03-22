@@ -32,13 +32,13 @@ function Navbar() {
         <img style={{ height: "86px" }} src={logo} alt="logo" />
       </Link>
 
-        {!currentUser && <Button label="Présentation"/>}
+        {!currentUser && <Button label="Présentation " url="/"/>}
       
-        {!currentUser && <Button label="Équipe"/>}
+        {!currentUser && <Button label="Équipe" url="/"/>}
 
-        {!currentUser && <Button label="Avis"/>}
+        {!currentUser && <Button label="Avis" url="/"/>}
 
-        {!currentUser && <Button label="Contact"/>}
+        {!currentUser && <Button label="Contact" url="/"/>}
 
       </div>
 
@@ -56,7 +56,7 @@ function Navbar() {
         )}
         {currentUser && (
           <>
-            <Button label="Mon compte"/>
+            <Button label="Mon compte" url="/private/private-myaccount"/>
             <button onClick={logOut} className="btn ms-2 text-danger">
               Se déconnecter
             </button>

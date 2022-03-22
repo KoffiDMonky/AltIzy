@@ -4,24 +4,25 @@ import Profilephoto from './ProfilePhoto';
 
 function Chatwindow(props) {
 
+    const id = props.id;
     const user = props.user;
-    const photoCurrentUser = props.user[0].profilePhoto;
+    const photoCurrentUser = props.user[id].profilePhoto;
+    const setWindow = props.setWindow;
 
-    // console.log(user[0]);
     return (
         <div className='chat-window'>
-            <button className=' close-chat-window'>x</button>
+            <button className=' close-chat-window' onClick={() => setWindow(false)}>x</button>
             <div className='chat-window-header'>
                 <Profilephoto user = {photoCurrentUser} />
-                <span>{user[0].name}</span>
+                <span>{user[id].name}</span>
             </div>
             <div className='message-zone'>
-                <Messageitem user = {user[0]}/>
-                <Messageitem user = {user[0]}/>
-                <Messageitem user = {user[0]}/>
-                <Messageitem user = {user[0]}/>
-                <Messageitem user = {user[0]}/>
-                <Messageitem user = {user[0]}/>
+                <Messageitem user = {user[id]}/>
+                <Messageitem user = {user[id]}/>
+                <Messageitem user = {user[id]}/>
+                <Messageitem user = {user[id]}/>
+                <Messageitem user = {user[id]}/>
+                <Messageitem user = {user[id]}/>
             </div>
             <div className='text-zone'><input></input><button className='btn'>Envoyer</button></div>
             

@@ -9,7 +9,6 @@ import { CardSwiper } from "react-card-rotate-swiper";
 function Randomcard(props) {
   const users = props.users;
   const handleSwipe = props.handleSwipe;
-  console.log(users);
 
   const cardStack = users.map((user, index) => (
     <CardSwiper

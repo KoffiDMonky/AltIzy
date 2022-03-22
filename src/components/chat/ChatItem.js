@@ -4,12 +4,14 @@ import Profilephoto from "./ProfilePhoto";
 function Chatitem(props) {
   const user = props.user;
   const photo = user.profilePhoto;
+  const id = props.id;
+ 
   return (
-    <div className="chat-item">
-      <Profilephoto user={photo} />
-      <div className="chat-item-content">
-        <span>{user.name}</span>
-        <span className="last-message">{user.message}</span>
+    <div className="chat-item" id={id}>
+      <Profilephoto user={photo} id={id} />
+      <div className="chat-item-content" id={id}>
+        <span id={id}>{user.name}</span>
+        <span className="last-message" id={id}>{user.message}</span>
       </div>
     </div>
   );
