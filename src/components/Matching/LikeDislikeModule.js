@@ -6,11 +6,14 @@ import checkmark from './../../images/check-mark.png'
 function Likedislikemodule(props){
 
     const users = props.users;
+    const swipeLeft = props.swipeLeft;
+    const swipeRight = props.swipeRight;
+
 
     return (
         <div className='Likedislikemodule'>
-            <Roundbutton logo = {crossmark} users={users} />    
-            <Roundbutton logo = {checkmark} users={users}/>    
+            <Roundbutton logo = {crossmark} users={users} swipe={swipeLeft} />    
+            <Roundbutton logo = {checkmark} users={users} swipe={swipeRight}/>    
         </div>
     );
 }

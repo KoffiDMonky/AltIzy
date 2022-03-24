@@ -23,13 +23,11 @@ function Chatlist() {
   const [UserIndex, setUserIndex] = useState();
 
   const toggleChatWindow = (e) => {
-    
+
     setWindow(!window);
     setUserIndex(e.target.id) 
 
   };
-
-
 
   const listItems = users.map((user, index) => (
     <li key={index} onClick={ toggleChatWindow }>
