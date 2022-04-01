@@ -17,6 +17,18 @@
     overflow-y: scroll;
 }
 
+.list-item::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    background-color: #e6cafb;
+    border-radius: 0 0 99px 99px;
+}
+
+.list-item::-webkit-scrollbar-thumb {
+    background: var(--main-violet);
+    border-radius: 99px;
+}
+
 
 .chat-list-header {
     padding: 20px;
@@ -113,6 +125,18 @@
     height: 71%;
     border-bottom: solid 1px var(--main-violet);
     overflow-y: scroll;
+}
+
+.message-zone::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    background-color: #e6cafb;
+    border-radius: 99px;
+}
+
+.message-zone::-webkit-scrollbar-thumb {
+    background: var(--main-violet);
+    border-radius: 99px;
 }
 
 .message-item{
