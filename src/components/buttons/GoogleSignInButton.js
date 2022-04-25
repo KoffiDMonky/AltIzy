@@ -18,6 +18,8 @@ function Googlesigninbutton() {
         // On obtient un jeton d'accès Google qui permet l'accès à L'API Google
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
+
+        console.log(token);
         // On récupère les informations de l'utilisateur
         const user = result.user;
 

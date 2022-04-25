@@ -29,7 +29,17 @@ function SignInModal() {
         //On récupère le l'email et le mot de passe
         inputs.current[0].value,
         inputs.current[1].value
-      );
+      )
+      .then((userCredential) => {
+        // Récupération du token de connexion
+        const token = userCredential.user.accessToken;
+        console.log(token);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
 
       //On vide les inputs du formulaire,ferme la modal et on redirige vers la page d'accueil privée
       setValidation("");

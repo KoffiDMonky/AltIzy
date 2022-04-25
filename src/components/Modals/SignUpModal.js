@@ -26,8 +26,6 @@ function SignUpModal() {
     //Permet de faire des validation côté front
     e.preventDefault();
 
-    console.log(inputs.current[0].value, inputs.current[1].value);
-
     if (
       (inputs.current[1].value.length || inputs.current[2].value.length) < 6
     ) {
@@ -40,7 +38,7 @@ function SignUpModal() {
     }
 
     try {
-      await signUp( //On récupère le l'email et le mot de passe
+      await signUp( //On récupère l'email et le mot de passe dans UserContext
         inputs.current[0].value,
         inputs.current[1].value
       )
