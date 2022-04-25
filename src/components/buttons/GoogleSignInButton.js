@@ -19,9 +19,10 @@ function Googlesigninbutton() {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
 
-        console.log(token);
         // On récupère les informations de l'utilisateur
         const user = result.user;
+        const uid = user.uid;
+        const login = user.email;
 
         //On ferma la fenêtre modal et on redirige vers la page d'accueil privée
         toggleModals("reset");

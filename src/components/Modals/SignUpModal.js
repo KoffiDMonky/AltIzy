@@ -41,7 +41,19 @@ function SignUpModal() {
       await signUp( //On récupère l'email et le mot de passe dans UserContext
         inputs.current[0].value,
         inputs.current[1].value
-      )
+      ).then((userCredential) => {
+        // Récupération du login, de l'uid et du token de connexion de l'utilisateur current
+        const userLogin = userCredential.user.email;
+        const uid = userCredential.user.uid;
+        const token = userCredential.user.accessToken;
+
+        console.log(userCredential.user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
 
       //On vide les inputs du formulaire
       // formRef.current.reset(); 

@@ -31,9 +31,10 @@ function SignInModal() {
         inputs.current[1].value
       )
       .then((userCredential) => {
-        // Récupération du token de connexion
+        // Récupération du login, de l'uid et du token de connexion de l'utilisateur current
+        const userLogin = userCredential.user.email;
+        const uid = userCredential.user.uid;
         const token = userCredential.user.accessToken;
-        console.log(token);
       })
       .catch((error) => {
         const errorCode = error.code;
