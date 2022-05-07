@@ -5,14 +5,20 @@ export const UserContext = createContext();
 
 export function UserContextProvider(props){
 
+    //Méthode d'enregistrement d'un nouvel utilisateur
     const signUp = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd)
+    //Méthode de connexion d'un utilisateur par mail et mots de passe
     const signIn = (email, pwd) => signInWithEmailAndPassword(auth, email, pwd)
-
-
 
     //Partie utilisateur (création, identitfication de l'utilisateur)
     const [currentUser, setCurrentUser] = useState();
+    const [idCurrentUser, setIdCurrentUser] = useState();
     const [loadingData, setLoadindData] = useState(true);
+
+    //Permet de récupérer l'identifiant de l'utilisateur courant dans le context
+    const getIdUser = id =>{
+        setIdCurrentUser(id)
+    }
 
     useEffect(() => {
          //On vérifie si l'utilisateur courant est bien connecté avant d'afficher la page d'accueil privée
@@ -69,7 +75,7 @@ export function UserContextProvider(props){
     
 
     return(
-        <UserContext.Provider value={{modalState, toggleModals, signUp, signIn, currentUser}}>
+        <UserContext.Provider value={{modalState, toggleModals, signUp, signIn, currentUser, getIdUser, idCurrentUser}}>
             {!loadingData && props.children}
         </UserContext.Provider>
     );

@@ -35,12 +35,19 @@ function SignInModal() {
         const userLogin = userCredential.user.email;
         const uid = userCredential.user.uid;
         const token = userCredential.user.accessToken;
+
+        fetch(`http://127.0.0.1:8000/api/utilisateurs.json?uid=${uid}`)
+                    .then((res) => res.json())
+                    .then((result) => {
+                      console.log(result);
+                    })
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         // ..
       });
+
 
       //On vide les inputs du formulaire,ferme la modal et on redirige vers la page d'accueil privée
       setValidation("");

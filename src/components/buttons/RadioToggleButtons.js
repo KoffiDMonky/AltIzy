@@ -1,16 +1,23 @@
 import React from "react";
 
-function Radiotogglebuttons() {
+function Radiotogglebuttons(props) {
+  const setStatus = props.setStatus;
+  const addInputs = props.addInputs;
+
   return (
     <div className="Radio-toggle-buttons-group">
       <input
         type="radio"
         className="btn-check"
         name="options"
-        id="btn-check-outlined1"
+        id="btn-professionnel"
         autoComplete="off"
+        onClick={setStatus}
       />
-      <label className="btn btn-outline-warning ms-5" htmlFor="btn-check-outlined1">
+      <label
+        className="btn btn-outline-warning ms-5"
+        htmlFor="btn-professionnel"
+      >
         Professionnel
       </label>
 
@@ -18,10 +25,11 @@ function Radiotogglebuttons() {
         type="radio"
         className="btn-check"
         name="options"
-        id="btn-check-outlined2"
+        id="btn-alternant"
         autoComplete="off"
+        onClick={setStatus}
       />
-      <label className="btn btn-outline-warning ms-3" htmlFor="btn-check-outlined2">
+      <label className="btn btn-outline-warning ms-3" htmlFor="btn-alternant">
         Alternant
       </label>
 
@@ -29,10 +37,12 @@ function Radiotogglebuttons() {
         type="radio"
         className="btn-check"
         name="options"
-        id="btn-check-outlined3"
+        id="btn-stagiaire"
         autoComplete="off"
+        onClick={setStatus}
+        
       />
-      <label className="btn btn-outline-warning ms-3" htmlFor="btn-check-outlined3">
+      <label className="btn btn-outline-warning ms-3" htmlFor="btn-stagiaire">
         Stagiaire
       </label>
     </div>
