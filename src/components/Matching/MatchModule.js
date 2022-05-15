@@ -75,7 +75,9 @@ function Matchmodule(props) {
     >
       {/* <div className="card-background" style={{ backgroundImage: "url(" + annonce.photo + ")" }}> */}
       <div className="card-background" style={{ backgroundColor: "red" }}>
-        <span>{annonce.auteur}</span>
+        {annonce.intitule}
+        {annonce.auteur}
+        {annonce.typeContrat}
       </div>
     </TinderCard>
   ));

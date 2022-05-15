@@ -68,8 +68,10 @@ function Formstudentaccount(props) {
       <div className="form-myaccount">
         <h1>Mettre à jour mon profil</h1>
         <form onSubmit={handleForm} className="Account-form">
-          <div className="form-group">
-            <label htmlFor="InputStatus">Vous êtes:</label>
+          <div className="form-group required">
+            <label htmlFor="InputStatus" className="control-label">
+              Vous êtes:
+            </label>
             <div id="InputStatus">
               <Radiotogglebuttons
                 status={status}
@@ -77,9 +79,12 @@ function Formstudentaccount(props) {
               />
             </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="InputPrenom">Prénom</label>
+          <div className="form-group required">
+            <label htmlFor="InputPrenom" className="control-label">
+              Prénom
+            </label>
             <input
+              required
               value={userData.prenom}
               onChange={updateUserDataHandler("prenom")}
               type="text"
@@ -89,9 +94,12 @@ function Formstudentaccount(props) {
               placeholder="Entrez votre prénom"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="InputNom">Nom</label>
+          <div className="form-group required">
+            <label htmlFor="InputNom" className="control-label">
+              Nom
+            </label>
             <input
+              required
               value={userData.nom}
               onChange={updateUserDataHandler("nom")}
               type="text"
@@ -101,9 +109,12 @@ function Formstudentaccount(props) {
               placeholder="Entrez votre nom"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="InputDateNais">Date de naissance</label>
+          <div className="form-group required">
+            <label htmlFor="InputDateNais" className="control-label">
+              Date de naissance
+            </label>
             <input
+              required
               value={userData.dateDeNaissance}
               onChange={updateUserDataHandler("dateDeNaissance")}
               type="date"
@@ -112,8 +123,10 @@ function Formstudentaccount(props) {
               aria-describedby="Date de naissance"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="InputEmail">Email</label>
+          <div className="form-group required">
+            <label htmlFor="InputEmail" className="control-label">
+              Email
+            </label>
             <input
               value={userData.email}
               onChange={updateUserDataHandler("email")}
@@ -141,6 +154,7 @@ function Formstudentaccount(props) {
             <label htmlFor="InputPhotoProfils">Photo de profil </label>
             <br></br>
             <input
+              required
               value={userData.photo}
               onChange={updateUserDataHandler("photo")}
               type="file"
@@ -148,9 +162,12 @@ function Formstudentaccount(props) {
               id="InputPhotoProfils"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="InputDomaine">Domaine recherché</label>
+          <div className="form-group required">
+            <label htmlFor="InputDomaine" className="control-label">
+              Domaine recherché
+            </label>
             <select
+              required
               value={userData.tags}
               onChange={updateUserDataHandler("tags")}
               className="form-select"
@@ -199,9 +216,12 @@ function Formstudentaccount(props) {
               placeholder="Type de contrat"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="InputDescription">Description</label>
+          <div className="form-group required">
+            <label htmlFor="InputDescription" className="control-label">
+              Description
+            </label>
             <textarea
+              required
               value={userData.description}
               onChange={updateUserDataHandler("description")}
               className="form-control"

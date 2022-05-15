@@ -1,14 +1,20 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef, useState, useEffect } from "react";
 import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
 import "./Modals.css";
 
 function SignUpModal() {
-  const { modalState, toggleModals, signUp, getIdUser } = useContext(UserContext); //On instantie useContext
+  const { modalState, toggleModals, signUp, getIdUser } =
+    useContext(UserContext); //On instantie useContext
 
   const navigate = useNavigate(); //On instantie useNavigate
 
   const [validation, setValidation] = useState("");
+  const [pwdOne, setPwdOne] = useState(""); //Variable d'état contenant le premier mot de passe saisie
+  const [pwdTwo, setPwdTwo] = useState(""); //Variable d'état contenant le second mot de passe saisie
+  const [strongPasswordMessage, setStrongPasswordMessage] = useState(""); //Variable d'état permettant de définir le message d'erreur en rapport avec la force du mot du passe saisie : plus de 6 caratères
+  const [samePasswordMessage, setSamePasswordMessage] = useState(""); //Variable d'état permettant de définir si les deux mots de passes saisie sont identique ou non
+
   const inputs = useRef([]); //useRef permet de récupérer nos inputs
   const addInputs = (el) => {
     // On ajout nos inputs courant (et leurs valeurs) dans notre tableau contenu dans useRef
@@ -17,20 +23,31 @@ function SignUpModal() {
     }
   };
 
+  const strongPassword = (value) => {
+    if (value === 0) {
+      setStrongPasswordMessage("");
+    } else if (value < 6) {
+      // Si le mdp ou le mdp de vérification font moins de 6 caractères...
+      setStrongPasswordMessage("Veuillez saisir 6 caractères minimum !"); // On lance la fonction setStrongPasswordMessage pour afficher le message de validation
+    } else if (value > 5) {
+      setStrongPasswordMessage("");
+    }
+  };
+
+  const samePassword = (value) => {
+    if (value == pwdOne && pwdOne) {
+      setSamePasswordMessage("");
+    } else if (!value) {
+      setSamePasswordMessage("");
+    } else {
+      //Si les deux mots de passe ne sont pas identiques...
+      setSamePasswordMessage("saisir le même mdp"); // On lance la fonction setSamePasswordMessage pour afficher le message de validation
+    }
+  };
+
   const handleForm = async (e) => {
     //Permet de faire des validation côté front
     e.preventDefault();
-
-    if (
-      (inputs.current[1].value.length || inputs.current[2].value.length) < 6
-    ) {
-      // Si le mdp ou le mdp de vérification font moins de 6 caractères...
-      setValidation("Veuillez saisir 6 caractères minimum !"); // On lance la fonction setValidation pour afficher le message de validation
-      return;
-    } else if (inputs.current[1].value !== inputs.current[2].value) {
-      setValidation("Les mots de passes ne sont pas identique !");
-      return;
-    }
 
     try {
       await signUp(
@@ -58,10 +75,8 @@ function SignUpModal() {
             body: JSON.stringify(userJson),
           }).then((response) => {
             response.json().then((object) => {
-
               //On récupère l'id autogénéré en base de l'utilisateur créé
-              getIdUser(object.id) 
-
+              getIdUser(object.id);
             });
           });
         })
@@ -94,6 +109,10 @@ function SignUpModal() {
     toggleModals("close");
   };
 
+  useEffect(() => {
+    strongPassword(pwdOne.length);
+    samePassword(pwdTwo);
+  });
 
   return (
     <>
@@ -140,7 +159,17 @@ function SignUpModal() {
                         required
                         className="form-control"
                         id="signUpPwd"
+                        value={pwdOne}
+                        onChange={(e) => setPwdOne(e.target.value)}
                       />
+                      <span
+                        style={{
+                          fontWeight: "bold",
+                          color: "red",
+                        }}
+                      >
+                        {strongPasswordMessage}
+                      </span>
                     </div>
 
                     <div className="mb-3">
@@ -154,7 +183,17 @@ function SignUpModal() {
                         required
                         className="form-control"
                         id="repeatPwd"
+                        value={pwdTwo}
+                        onChange={(e) => setPwdTwo(e.target.value)}
                       />
+                      <span
+                        style={{
+                          fontWeight: "bold",
+                          color: "red",
+                        }}
+                      >
+                        {samePasswordMessage}
+                      </span>
                       <p className="text-danger mt-1">{validation}</p>
                     </div>
                     <button className="btn btn-primary">S'inscrire</button>

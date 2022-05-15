@@ -27,8 +27,8 @@ function Formenterpriseaccount(props) {
     email: "",
     photo: "",
     interlocuteur: "",
-    description: ""
-  }
+    description: "",
+  };
 
   //Méthodes permettant de mettre à jour les informations de l'utilisateur dans l'objet JSON
   const [userData, setUserData] = useState(initialUserData);
@@ -41,28 +41,30 @@ function Formenterpriseaccount(props) {
 
   //Méthode POST des données vers la BDD
   const handleForm = (e) => {
-      e.preventDefault();
-      console.log(userData);
-      fetch("http://127.0.0.1:8000/api/entreprises", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData),
-      })
+    e.preventDefault();
+    console.log(userData);
+    fetch("http://127.0.0.1:8000/api/entreprises", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    })
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-      })
+      });
 
-      navigate("/private/private-home");
-    }
+    navigate("/private/private-home");
+  };
 
   return (
     <div className=" container">
       <div className="form-myaccount">
         <h1>Mettre à jour mon profil</h1>
         <form onSubmit={handleForm} className="Account-form">
-          <div className="form-group">
-            <label htmlFor="InputStatus">Vous êtes:</label>
+          <div className="form-group required">
+            <label htmlFor="InputStatus" className="control-label">
+              Vous êtes:
+            </label>
             <div id="InputStatus">
               <Radiotogglebuttons
                 status={status}
@@ -70,9 +72,12 @@ function Formenterpriseaccount(props) {
               />
             </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="InputSiren">Numéro de SIREN</label>
+          <div className="form-group required">
+            <label htmlFor="InputSiren" className="control-label">
+              Numéro de SIREN
+            </label>
             <input
+              required
               value={userData.siren}
               onChange={updateUserDataHandler("siren")}
               type="number"
@@ -82,9 +87,12 @@ function Formenterpriseaccount(props) {
               placeholder="Entrez votre numéro de SIREN"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="InputNomSociete">Nom de la société</label>
+          <div className="form-group required">
+            <label htmlFor="InputNomSociete" className="control-label">
+              Nom de la société
+            </label>
             <input
+              required
               value={userData.nom}
               onChange={updateUserDataHandler("nom")}
               type="text"
@@ -94,9 +102,12 @@ function Formenterpriseaccount(props) {
               placeholder="Entrez le nom de votre société"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="InputEmailSociete">Email</label>
+          <div className="form-group required">
+            <label htmlFor="InputEmailSociete" className="control-label">
+              Email
+            </label>
             <input
+              required
               value={userData.email}
               onChange={updateUserDataHandler("email")}
               type="email"
@@ -117,9 +128,12 @@ function Formenterpriseaccount(props) {
               id="InputLogo"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="InputInterlocuteur">Interlocuteur</label>
+          <div className="form-group required">
+            <label htmlFor="InputInterlocuteur" className="control-label">
+              Interlocuteur
+            </label>
             <input
+              required
               value={userData.interlocuteur}
               onChange={updateUserDataHandler("interlocuteur")}
               type="text"
@@ -130,11 +144,12 @@ function Formenterpriseaccount(props) {
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="InputDescriptionSociete">
+          <div className="form-group required">
+            <label htmlFor="InputDescriptionSociete" className="control-label">
               Description de la société
             </label>
             <textarea
+              required
               value={userData.description}
               onChange={updateUserDataHandler("description")}
               className="form-control"

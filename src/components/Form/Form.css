@@ -21,6 +21,11 @@
     margin-bottom: 20px;
 }
 
+.form-group.required .control-label:after {
+    content:"*";
+    color:red;
+}
+
 button#form-contact-submit {
     width: -webkit-fill-available;
 }
