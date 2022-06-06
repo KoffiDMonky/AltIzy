@@ -1,7 +1,11 @@
-import React, { useState, useContext, useMemo, useRef } from "react";
+import React, { useState, useMemo, useRef } from "react";
 import "./matching.css";
 import TinderCard from "react-tinder-card";
 import Likedislikemodule from "./LikeDislikeModule";
+import domaine from "./../../images/Icônes/altizy-domaine-bleu.png";
+import pin from "./../../images/Icônes/altizy-localisation-bleu.png";
+import offre from "./../../images/Icônes/altizy-personne-bleu.png";
+import Card from "./Card";
 // import alex from "./../../images/alex.jpg";
 // import johanna from "./../../images/johanna.jpg";
 // import manon from "./../../images/manon.jpg";
@@ -17,10 +21,7 @@ import Likedislikemodule from "./LikeDislikeModule";
 // ];
 
 function Matchmodule(props) {
-
   const annonces = props.annonces;
-
-  console.log(annonces);
   const [currentIndex, setCurrentIndex] = useState(annonces.length - 1);
   const [lastDirection, setLastDirection] = useState();
 
@@ -42,10 +43,17 @@ function Matchmodule(props) {
   const canSwipe = currentIndex >= 0;
   const canGoBack = currentIndex < annonces.length - 1;
 
-  // set last direction and decrease current index
+  // Défini la dernière direction et diminuer l'index actuel
   const swiped = (direction, nameToDelete, index) => {
     setLastDirection(direction);
     updateCurrentIndex(index - 1);
+
+    //TODO: Finir de gérer les match une fois qu'il y aura plus de data dans la BDD
+    if (direction === "right") {
+      console.log("Controle si match existant + passage à true");
+    }
+
+    // console.log(direction);
   };
 
   const outOfFrame = (name, idx) => {
@@ -55,13 +63,13 @@ function Matchmodule(props) {
 
   const swipeLeft = async () => {
     if (canSwipe && currentIndex < annonces.length) {
-      await childRefs[currentIndex].current.swipe("left"); // Swipe the card on the left!
+      await childRefs[currentIndex].current.swipe("left"); // Passez la carte sur la gauche
     }
   };
 
   const swipeRight = async () => {
     if (canSwipe && currentIndex < annonces.length) {
-      await childRefs[currentIndex].current.swipe("right"); // Swipe the card on the right!
+      await childRefs[currentIndex].current.swipe("right"); // Passez la carte sur la droite
     }
   };
 
@@ -70,15 +78,19 @@ function Matchmodule(props) {
       key={index}
       ref={childRefs[index]}
       className="card"
-      onSwipe={(dir) => swiped(dir, annonce.name, index)}
-      onCardLeftScreen={() => outOfFrame(annonce.name, index)}
+      onSwipe={(dir) => swiped(dir, annonce.intitule, index)}
+      onCardLeftScreen={() => outOfFrame(annonce.intitule, index)}
     >
-      {/* <div className="card-background" style={{ backgroundImage: "url(" + annonce.photo + ")" }}> */}
-      <div className="card-background" style={{ backgroundColor: "red" }}>
-        {annonce.intitule}
-        {annonce.auteur}
-        {annonce.typeContrat}
-      </div>
+      <Card
+        photo={annonce.photo}
+        nomEntreprise={annonce.nomEntreprise}
+        auteur={annonce.auteur}
+        tag={annonce.tag}
+        adresseEntreprise={annonce.adresseEntreprise}
+        typeContrat={annonce.typeContrat}
+        intitule={annonce.intitule}
+        description={annonce.description}
+      />
     </TinderCard>
   ));
 

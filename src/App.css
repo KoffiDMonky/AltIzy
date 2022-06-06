@@ -5,6 +5,8 @@
   --main-orange: #F4974B;
 }
 
+
+
 .App {
   text-align: center;
 }
@@ -71,5 +73,29 @@ h1{
   color: #fff;
   background-color: var(--main-orange);
   border-color: var(--main-orange);
+}
+
+#root {
+  height: 87vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 100px;
+  right: 0;
+  bottom: 90px;
+  overflow-y: scroll;
+}
+
+#root::-webkit-scrollbar {
+  width: 12px;
+  height: 8px;
+  background-color: #e6cafb;
+  border-radius: 99px;
+}
+
+#root::-webkit-scrollbar-thumb {
+  background: var(--main-violet);
+  border-radius: 99px;
 }
 

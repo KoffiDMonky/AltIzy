@@ -5,16 +5,24 @@
 }
 
 .chat-list {
-    height: 79.6vh;
-    width: 25vw;
+    height: 100%;
+    width: 20vw;
     border-right: solid 1px var(--main-violet);
     box-shadow: 4px 0px 20px -10px rgba(0, 0, 0, 0.30);
     list-style: none;
+    position: fixed;
+    top: 100px;
+    bottom: 200px;
 }
 
 .list-item {
-    height: 87%;
+    position: fixed;
+    top: 176px;
+    left: 0;
+    bottom: 90px;
+    width: 20vw;
     overflow-y: scroll;
+
 }
 
 .list-item::-webkit-scrollbar {
@@ -79,16 +87,23 @@
 }
 
 .chat-window {
+    position: fixed;
     height: 400px;
     width: 350px;
     border: solid 2px var(--main-violet);
-    position: relative;
-    left: 320%;
-    bottom:396px;
+    right: 5%;
+    bottom: 85px;
     border-radius: 5px 5px 0 0;
     background-color: #fdfdfd;
 
 }
+
+@media screen and (max-width: 1470px) {
+    .chat-window {
+        right: 2%;
+        bottom: 85px;
+    }
+  }
 
 .close-chat-window{
     position: absolute;

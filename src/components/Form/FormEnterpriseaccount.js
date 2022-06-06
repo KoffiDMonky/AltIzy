@@ -3,6 +3,9 @@ import Radiotogglebuttons from "./../buttons/RadioToggleButtons";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./../../context/userContext";
 
+import * as api from "./../../api-service"
+
+
 function Formenterpriseaccount(props) {
   //Permets de déterminer le statut de l'utilisateur: Etudiant (alternant / stagiare) ou Entreprise
   const status = props.status;
@@ -15,13 +18,13 @@ function Formenterpriseaccount(props) {
 
   //id de l'utilisateur courant
   const id = idCurrentUser;
-
+  console.log("id", id);
   //Fonction permettant de changer de formulaire en fonction du statut de l'utilisateur: Etudiant ou entreprise
   const handleStatusClick = props.handleStatusClick;
 
   //On créé un objet "initialUserData" json qui servira pour le POST des données concernant l'entreprise via l'API REST
   const initialUserData = {
-    utilisateur: `/api/utilisateurs/${id}`, //TODO: régler problème id undefined...
+    utilisateur: `/api/utilisateurs/${id}`,
     siren: "",
     nom: "",
     email: "",
@@ -43,11 +46,8 @@ function Formenterpriseaccount(props) {
   const handleForm = (e) => {
     e.preventDefault();
     console.log(userData);
-    fetch("http://127.0.0.1:8000/api/entreprises", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData),
-    })
+
+    api.postUser("http://127.0.0.1:8000/api/entreprises", userData )
       .then((res) => res.json())
       .then((result) => {
         console.log(result);

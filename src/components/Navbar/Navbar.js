@@ -6,11 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase-config";
 import logo from "./../../images/Logo_Altizy.png";
 import Button from "../buttons/Button";
+import "./navbar.css";
 
 function Navbar() {
-  const { toggleModals } = useContext(UserContext);
-
-  const { currentUser } = useContext(UserContext);
+  const { toggleModals, currentUser, isStudent } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -27,23 +26,35 @@ function Navbar() {
 
   return (
     <nav className="navbar navbarlight bg-light px-4">
-      <div>
-      <Link to="/private/private-home" className="navbar-brand">
-        <img style={{ height: "86px" }} src={logo} alt="logo" />
-      </Link>
+      <div className="menu">
+        <Link to="/private/private-home" className="navbar-brand">
+          <img style={{ height: "86px" }} src={logo} alt="logo" />
+        </Link>
 
-        {!currentUser && <Button label="Présentation " url="/"/>}
-      
-        {!currentUser && <Button label="Équipe" url="/"/>}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
 
-        {!currentUser && <Button label="Avis" url="/"/>}
+        <div className="menu1">
+          {!currentUser && <Button label="Présentation " url="/" />}
 
-        {!currentUser && <Button label="Contact" url="/"/>}
+          {!currentUser && <Button label="Équipe" url="/" />}
 
+          {!currentUser && <Button label="Avis" url="/" />}
+
+          {!currentUser && <Button label="Contact" url="/" />}
+        </div>
       </div>
 
-      <div>
-
+      <div className="menu2">
         {!currentUser && (
           <button onClick={() => toggleModals("signUp")} className="btn ">
             S'inscrire
@@ -56,7 +67,15 @@ function Navbar() {
         )}
         {currentUser && (
           <>
-            <Button label="Mon compte" url="/private/private-myaccount"/>
+            {isStudent ? (
+              <Button
+                label="Ma candidature"
+                url="/private/private-myapplication"
+              />
+            ) : (
+              <Button label="Mes annonces" url="/private/private-myaccount" />
+            )}
+            <Button label="Mon compte" url="/private/private-myaccount" />
             <button onClick={logOut} className="btn ms-2 text-danger">
               Se déconnecter
             </button>

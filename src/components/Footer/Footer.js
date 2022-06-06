@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import instagram from "./../../images/Icônes/altizy-instagram-logo-footer-blanc.png";
 import linkedIn from "./../../images/Icônes/altizy-linkedin-logo-footer-blanc.png";
-import tiktok from "./../../images/Icônes/altizy-tiktok-logo-footer-blanc.png";
+// import tiktok from "./../../images/Icônes/altizy-tiktok-logo-footer-blanc.png";
 import "./Footer.css";
 
 function Footer() {
@@ -32,11 +32,11 @@ function Footer() {
         <img src={instagram} alt="instagram" />
       </Link>
       <Link to="/" className="navbar-brand">
-        <img src={linkedIn} alt="instagram" />
+        <img src={linkedIn} alt="linkedIn" />
       </Link>
-      <Link to="/" className="navbar-brand">
+      {/* <Link to="/" className="navbar-brand">
         <img src={tiktok} alt="instagram" />
-      </Link>
+      </Link> */}
       </div>
     </div>
   );

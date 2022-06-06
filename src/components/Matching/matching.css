@@ -2,17 +2,21 @@
     --main-violet: #9B79B5;
     --main-blue: #2B4999;
     --main-orange: #F4974B;
+    --card-height: 80%;
+    --card-width: 300px;
 }
 
 .match-module {
     position: absolute;
-    left: 50%;
-    top: 18%
+    left: 37%;
+    height: 450px;
+    /* top: 5% */
 }
 
+
 .card-container {
-    width: 240px;
-    height: 350px;
+    width: var(--card-width);
+    height: var(--card-height);
     margin: 35px auto;
     border-radius: 6px;
 }
@@ -31,8 +35,8 @@ z-index: 0;
     position: absolute;
     top: 0;
     z-index: 100;
-    width: 240px;
-    height: 350px;
+    width: var(--card-width);
+    height: var(--card-height);
     margin: 35px auto;
     /* border: solid 1px var(--main-violet); */
     border-radius: 6px;
@@ -40,19 +44,86 @@ z-index: 0;
 }
 
 .card-background {
-    height: 350px;
-    background-size: cover;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
     border: solid 1px var(--main-violet);
     border-radius: 6px;
 }
 
-.card-background span {
-    position: relative;
-    top: 80%;
-    left: 8%;
-    font-size: 35px;
+.card-background .informations {
+    top: 23%;
+    height: 80%;
+}
+.card-background .informations .nom-entreprise {
+    font-size: 25px;
     font-weight: 500;
-    color: #fdfdfd;
+    width: 50%;
+    text-align: center;
+    background-color: #2B4999;
+    color: #f6f6f6;
+    margin-bottom: 5px;
+
+}
+.card-background .informations .auteur {
+    font-size: 25px;
+    font-weight: 500;
+    width: 60%;
+    text-align: center;
+    background-color: #2B4999;
+    color: #f6f6f6
+
+}
+.card-background .informations .resume {
+
+    display: flex;
+    flex-direction: column;
+    padding: 3px;
+    gap: 5px;
+    text-align: left;
+
+}
+.card-background .informations .res {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.adresse-entreprise .icon{
+    position: relative;
+    left: 4px;
+} 
+.adresse-entreprise .texte{
+    position: relative;
+    left: 10px;
+} 
+
+
+.card-background .informations{
+    position: relative;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.card-background .informations .titre{
+ font-size: 25px;
+ font-weight: 600;
+ text-align: center;
+ line-height: 20px;
+}
+
+.card-background .informations .description{
+ font-size: 20px;
+ text-align: center;
+ line-height: 35px;
+ text-align: justify;
+ padding: 5px 30px;
+}
+
+.informations .icon {
+    height: 30px;
 }
 
 .Likedislikemodule {
@@ -76,3 +147,20 @@ z-index: 0;
     height: 30px;
     width: 30px;
 }
+
+@media screen and (max-width: 1470px) {
+    .match-module {
+        left: 25%;
+    }
+  }
+
+@media screen and (max-width: 1180px) {
+    .match-module {
+        left: 17%;
+    }
+  }
+@media screen and (max-width: 1040px) {
+    .match-module {
+        left: 10%;
+    }
+  }

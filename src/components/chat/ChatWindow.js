@@ -18,11 +18,11 @@ function Chatwindow(props) {
             </div>
             <div className='message-zone'>
                 <Messageitem user = {user[id]}/>
+                {/* <Messageitem user = {user[id]}/>
                 <Messageitem user = {user[id]}/>
                 <Messageitem user = {user[id]}/>
                 <Messageitem user = {user[id]}/>
-                <Messageitem user = {user[id]}/>
-                <Messageitem user = {user[id]}/>
+                <Messageitem user = {user[id]}/> */}
             </div>
             <div className='text-zone'><input></input><button className='btn'>Envoyer</button></div>
             

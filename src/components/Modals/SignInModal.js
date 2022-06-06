@@ -5,6 +5,7 @@ import "./Modals.css";
 import Googlesigninbutton from "../buttons/GoogleSignInButton";
 // import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
+
 function SignInModal() {
   const { modalState, toggleModals, signIn } = useContext(UserContext); //On instantie useContext
   const navigate = useNavigate(); //On instantie useNavigate

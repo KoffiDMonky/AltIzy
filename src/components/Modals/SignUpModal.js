@@ -4,12 +4,9 @@ import { useNavigate } from "react-router-dom";
 import "./Modals.css";
 
 function SignUpModal() {
-  const { modalState, toggleModals, signUp, getIdUser } =
-    useContext(UserContext); //On instantie useContext
-
+  const { modalState, toggleModals, signUp, getIdUser } = useContext(UserContext); //On instantie useContext
   const navigate = useNavigate(); //On instantie useNavigate
-
-  const [validation, setValidation] = useState("");
+  const [validation, setValidation] = useState(""); //Variable d'état permettant de déclencher un message d'erreur si le mail n'est pas valide ou déjà existant
   const [pwdOne, setPwdOne] = useState(""); //Variable d'état contenant le premier mot de passe saisie
   const [pwdTwo, setPwdTwo] = useState(""); //Variable d'état contenant le second mot de passe saisie
   const [strongPasswordMessage, setStrongPasswordMessage] = useState(""); //Variable d'état permettant de définir le message d'erreur en rapport avec la force du mot du passe saisie : plus de 6 caratères

@@ -2,6 +2,12 @@
     width: 40%;
 }
 
+@media screen and (max-width:1060px) {
+    .form-contact form{
+        width: 60%;
+    }
+}
+
 .form-contact {
     display: flex;
     flex-direction: column;
@@ -28,4 +34,13 @@
 
 button#form-contact-submit {
     width: -webkit-fill-available;
+}
+
+
+@media screen and (max-width: 360px) {
+
+    .form-contact h1 {
+        font-size: 40px;
+    }
+
 }

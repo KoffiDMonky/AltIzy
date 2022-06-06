@@ -9,6 +9,7 @@ import Private from './pages/Private/Private';
 import PrivateHome from './pages/Private/PrivateHome/PrivateHome';
 import Myaccount from './pages/Private/PrivateMyAccount/MyAccount';
 import Footer from './components/Footer/Footer';
+import MyApplication from './pages/Private/PrivateMyAccount/MyApplication';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/private" element={<Private />}>
           <Route path="/private/private-home" element={<PrivateHome />}/>
+          <Route path="/private/private-myapplication" element={<MyApplication />}/>
           <Route path="/private/private-myaccount" element={<Myaccount />}/>
         </Route>
       </Routes>

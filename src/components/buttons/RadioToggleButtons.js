@@ -5,17 +5,17 @@ function Radiotogglebuttons(props) {
   const addInputs = props.addInputs;
 
   return (
-    <div className="Radio-toggle-buttons-group">
+    <div className="Radio-toggle-buttons-group ms-5">
       <input
         type="radio"
         className="btn-check"
         name="options"
         id="btn-professionnel"
         autoComplete="off"
-        onClick={setStatus}
+        onChange={setStatus}
       />
       <label
-        className="btn btn-outline-warning ms-5"
+        className="btn btn-outline-warning ms-3"
         htmlFor="btn-professionnel"
       >
         Professionnel

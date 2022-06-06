@@ -2,19 +2,26 @@ import React, { useState } from "react";
 import "./chat.css";
 import Chatitem from "./ChatItem";
 import Chatwindow from './ChatWindow';
-import alex from "./../../images/alex.jpg";
-import johanna from "./../../images/johanna.jpg";
-import manon from "./../../images/manon.jpg";
-import chloe from "./../../images/chloe.jpg";
-import agenor from "./../../images/agenor.jpg";
+// import alex from "./../../images/alex.jpg";
+// import johanna from "./../../images/johanna.jpg";
+// import manon from "./../../images/manon.jpg";
+// import chloe from "./../../images/chloe.jpg";
+// import agenor from "./../../images/agenor.jpg";
+
+import intersport from "./../../images/entreprises/intersport.png"
+import lesbottes from "./../../images/entreprises/lesbottes.png"
+import ubisoft from "./../../images/entreprises/ubisoft.png"
+import naeco from "./../../images/entreprises/naeco.png"
+import ojc from "./../../images/entreprises/ojc.png"
 
 
 const users = [
-  { id: 0, name: "Alex", profilePhoto: alex, message: "Salut ! ça va ?"  },
-  { id: 1, name: "Johanna", profilePhoto: johanna, message: "Salut ! ça va ?"  },
-  { id: 2, name: "Manon", profilePhoto: manon, message: "Salut ! ça va ?"  },
-  { id: 3, name: "Chloé", profilePhoto: chloe, message: "Salut ! ça va ?"  },
-  { id: 4, name: "Agénor", profilePhoto: agenor, message: "Salut ! ça va ?"  },
+  { id: 0, name: "Intersport", profilePhoto: intersport, message: "Bonjour Alexandre !"  },
+  { id: 1, name: "Les bottes d'anémone", profilePhoto: lesbottes, message: "Connaissez-vous les bottes..."  },
+  { id: 2, name: "Ubisoft", profilePhoto: ubisoft, message: "Votre profils nous interresse"  },
+  { id: 3, name: "OJC Conseil", profilePhoto: ojc, message: "Félicitation !"  },
+  { id: 4, name: "Naéco", profilePhoto: naeco, message: "Êtes-vous toujours en recherche de stage ?"  },
+  // { id: 4, name: "Agénor", profilePhoto: agenor, message: "Salut ! ça va ?"  },
 ];
 
 function Chatlist() {

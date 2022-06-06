@@ -1,12 +1,16 @@
 .footer {
     background-color: #9B79B5;
-    position: relative;
+    /* position: relative; */
+    /* bottom: 0;
+    right: 0;
+    left: 0; */
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    z-index: 1000;
 }
 
 .menu-footer {
@@ -17,4 +21,12 @@
 
 .menu-footer .navbar-brand {
 margin-right: 0;
+}
+
+@media screen and (max-width: 360px) {
+
+    .navbar-brand .text-style-1 {
+        font-size: 12px;
+    }
+
 }

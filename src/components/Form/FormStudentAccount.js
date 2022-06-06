@@ -1,7 +1,9 @@
-import React, { useState, useCallback, useContext } from "react";
+import React, { useState, useCallback, useContext, useEffect } from "react";
 import Radiotogglebuttons from "./../buttons/RadioToggleButtons";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./../../context/userContext";
+
+import * as api from "./../../api-service"
 
 function Formstudentaccount(props) {
   //Permets de déterminer le statut de l'utilisateur: Etudiant (alternant / stagiare) ou Entreprise
@@ -37,6 +39,8 @@ function Formstudentaccount(props) {
     description: "",
   };
 
+  const [tags, setTags] = useState([]);
+
   //Méthodes permettant de mettre à jour les informations de l'utilisateur dans l'objet JSON
   const [userData, setUserData] = useState(initialUserData);
   const updateUserDataHandler = useCallback(
@@ -46,15 +50,23 @@ function Formstudentaccount(props) {
     [userData]
   );
 
+  const getTags = async () => {
+    await fetch("http://127.0.0.1:8000/api/tags.json")
+      .then((res) => res.json())
+      .then((result) => {
+        setTags(result);
+
+      });
+  };
+
+  const tagsList = tags.map((tag, index) => (
+    <option defaultValue={index}>{tag.label}</option>
+  ))
+
   //Méthode POST des données vers la BDD
   const handleForm = (e) => {
     e.preventDefault();
-    console.log(userData);
-    fetch("http://127.0.0.1:8000/api/etudiants", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData),
-    })
+    api.postUser("http://127.0.0.1:8000/api/etudiants", userData )
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
@@ -62,6 +74,10 @@ function Formstudentaccount(props) {
 
     navigate("/private/private-home");
   };
+  
+  useEffect(() => {
+    getTags(); 
+  }, []);
 
   return (
     <div className=" container">
@@ -168,16 +184,14 @@ function Formstudentaccount(props) {
             </label>
             <select
               required
-              value={userData.tags}
+              // value={userData.tags}
               onChange={updateUserDataHandler("tags")}
               className="form-select"
               aria-label="multiple select example"
               id="InputDomaine"
             >
-              <option defaultValue>Open this select menu</option>
-              <option defaultValue="1">One</option>
-              <option defaultValue="2">Two</option>
-              <option defaultValue="3">Three</option>
+              <option defaultValue>Ouvrir pour voir les domaines</option>
+              {tagsList}
             </select>
           </div>
           <div className="form-group">
