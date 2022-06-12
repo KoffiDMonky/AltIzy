@@ -37,10 +37,19 @@ button#form-contact-submit {
 }
 
 
+@media screen and (max-width: 530px) {
+
+    .form-contact h1 {
+        font-size: 45px;
+        text-align: center;
+    }
+
+}
 @media screen and (max-width: 360px) {
 
     .form-contact h1 {
-        font-size: 40px;
+        font-size: 35px;
+        text-align: center;
     }
 
 }

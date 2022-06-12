@@ -3,7 +3,7 @@ import React from 'react';
 function MyApplication(){
     return (
         <div>
-            MyApplication
+            Ma candidature
         </div>
     );
 }

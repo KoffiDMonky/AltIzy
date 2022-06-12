@@ -1,100 +1,107 @@
 import React, { useState, useCallback, useContext, useEffect } from "react";
-import Radiotogglebuttons from "./../buttons/RadioToggleButtons";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./../../context/userContext";
 
-import * as api from "./../../api-service"
+import * as api from "./../../api-service";
 
 function Formstudentaccount(props) {
-  //Permets de déterminer le statut de l'utilisateur: Etudiant (alternant / stagiare) ou Entreprise
-  const status = props.status;
+  // //Permets de déterminer le statut de l'utilisateur: Etudiant (alternant / stagiare) ou Entreprise
+  // const status = props.status;
 
-  //On instantie useNavigate
-  const navigate = useNavigate();
+  // //On instantie useNavigate
+  // const navigate = useNavigate();
 
-  //On instantie useContext
-  const { idCurrentUser } = useContext(UserContext);
+  // //On instantie useContext
+  // const { idCurrentUser } = useContext(UserContext);
 
-  //id de l'utilisateur courant
-  const id = idCurrentUser;
+  // //id de l'utilisateur courant
+  // const id = idCurrentUser;
 
-  //Fonction permettant de changer de formulaire en fonction du statut de l'utilisateur: Etudiant ou entreprise
-  const handleStatusClick = props.handleStatusClick;
+  // //Composant bouton radio
+  // const radioButtons = props.radioButtons;
 
-  //On créé un objet "initialUserData" json qui servira pour le POST des données concernant l'entreprise via l'API REST
-  const initialUserData = {
-    utilisateur: `/api/utilisateurs/${id}`,
-    nom: "",
-    prenom: "",
-    dateDeNaissance: "",
-    email: "",
-    photo: "",
-    telephone: 0,
-    niveauEtude: "",
-    typeRecherche: "",
-    zoneRecherche: "",
-    cv: "",
-    candidatures: [""],
-    tags: [""],
-    description: "",
-  };
+  // //On créé un objet "initialUserData" json qui servira pour le POST des données concernant l'entreprise via l'API REST
+  // const initialUserData = {
+  //   utilisateur: `/api/utilisateurs/${id}`,
+  //   nom: "",
+  //   prenom: "",
+  //   dateDeNaissance: "",
+  //   email: "",
+  //   photo: "",
+  //   telephone: 0,
+  //   niveauEtude: "",
+  //   typeRecherche: "",
+  //   zoneRecherche: "",
+  //   cv: "",
+  //   candidatures: [""],
+  //   tags: [""],
+  //   description: "",
+  // };
 
   const [tags, setTags] = useState([]);
 
+  // const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTQ4MDUwNDIsImV4cCI6MTY1NDgwODY0Miwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdCJ9.raieb7RlJ2OeRxwBOHZXnPNxBAHH_diDfQDRRFaYhkx2SoMCqYkaoLYF8zyLj3tOcSzWEAUpCYRCZum2j7D4DXd--pZ0h6_kZiyiVc2CpI0cdCLTIwjY70EkEN4sm6H_Xv0pu8P-KfY7PddThu7Xng9jJKL7ipbPDaO9S2o_EPeram_nq5Nexxn8GY20uRGAtSiEOSig7Xq_r04FX8r9diu1ij2vrJsCAWDmd6TmkOJUFixdqM6AwwqF74KBN30JPr8tcFzsAs9x844tZ6gm29TkiDO3R96vJFRbiEQLspssjakmhL_QNJPtl95xNk_iRjgpz-VvzAU4McBC0rkM-BM5hJKChkhb5Ruyomj2wFoZrwgpfiRKIVg1e3CSGXAD3N4V4haC5jZmAOqdkz0FOIPEwGzui7hPH14UAi4Ch1kOSLjLnbu5qXF9lNECwDmCOkx0QgaS9Kn6gCHDErYu8uoftInFpQHL2h8JoHD-v8ef70A__lbppPEN6sCQSbX1_4y3rqRf8HdBl0Oo4LuRXGFNtCuY3OOvF5my7TTuqmBMAOCsjFt-j2HMRhn2NnabqAzR2myEOgD7DwNIvi5OsCuO428BuWdwKPsZhyu1ZpNq1rIsMoBiZnRdbg7PJeD3d-gZ6aI3AS_afUCOZ7rdXet8UUYX6ZhZVw8eJenC9yU'
+
   //Méthodes permettant de mettre à jour les informations de l'utilisateur dans l'objet JSON
-  const [userData, setUserData] = useState(initialUserData);
-  const updateUserDataHandler = useCallback(
-    (type) => (event) => {
-      setUserData({ ...userData, [type]: event.target.value });
-    },
-    [userData]
-  );
+  // const [userData, setUserData] = useState(initialUserData);
+  // const updateUserDataHandler = useCallback(
+  //   (type) => (event) => {
+  //     setUserData({ ...userData, [type]: event.target.value });
+  //   },
+  //   [userData]
+  // );
+
+  const userData = props.userData;
+  const updateUserDataHandler = props.updateUserDataHandler;
 
   const getTags = async () => {
-    await fetch("http://127.0.0.1:8000/api/tags.json")
+    await fetch("http://127.0.0.1:8000/api/tags.json", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/ld+json",
+        // "Authorization": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTQ4MDUwNDIsImV4cCI6MTY1NDgwODY0Miwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdCJ9.raieb7RlJ2OeRxwBOHZXnPNxBAHH_diDfQDRRFaYhkx2SoMCqYkaoLYF8zyLj3tOcSzWEAUpCYRCZum2j7D4DXd--pZ0h6_kZiyiVc2CpI0cdCLTIwjY70EkEN4sm6H_Xv0pu8P-KfY7PddThu7Xng9jJKL7ipbPDaO9S2o_EPeram_nq5Nexxn8GY20uRGAtSiEOSig7Xq_r04FX8r9diu1ij2vrJsCAWDmd6TmkOJUFixdqM6AwwqF74KBN30JPr8tcFzsAs9x844tZ6gm29TkiDO3R96vJFRbiEQLspssjakmhL_QNJPtl95xNk_iRjgpz-VvzAU4McBC0rkM-BM5hJKChkhb5Ruyomj2wFoZrwgpfiRKIVg1e3CSGXAD3N4V4haC5jZmAOqdkz0FOIPEwGzui7hPH14UAi4Ch1kOSLjLnbu5qXF9lNECwDmCOkx0QgaS9Kn6gCHDErYu8uoftInFpQHL2h8JoHD-v8ef70A__lbppPEN6sCQSbX1_4y3rqRf8HdBl0Oo4LuRXGFNtCuY3OOvF5my7TTuqmBMAOCsjFt-j2HMRhn2NnabqAzR2myEOgD7DwNIvi5OsCuO428BuWdwKPsZhyu1ZpNq1rIsMoBiZnRdbg7PJeD3d-gZ6aI3AS_afUCOZ7rdXet8UUYX6ZhZVw8eJenC9yU"
+      },
+    })
       .then((res) => res.json())
       .then((result) => {
         setTags(result);
-
       });
   };
 
   const tagsList = tags.map((tag, index) => (
-    <option defaultValue={index}>{tag.label}</option>
-  ))
+    <option defaultValue={index} key={index}>
+      {tag.label}
+    </option>
+  ));
 
-  //Méthode POST des données vers la BDD
-  const handleForm = (e) => {
-    e.preventDefault();
-    api.postUser("http://127.0.0.1:8000/api/etudiants", userData )
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-      });
+  // //Méthode POST des données vers la BDD
+  // const handleForm = (e) => {
+  //   e.preventDefault();
+  //   api
+  //     .postUser("http://127.0.0.1:8000/api/etudiants", userData)
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       console.log(result);
+  //     });
 
-    navigate("/private/private-home");
-  };
-  
+  //   navigate("/private/private-home");
+  // };
+
   useEffect(() => {
-    getTags(); 
+    getTags();
   }, []);
 
   return (
-    <div className=" container">
-      <div className="form-myaccount">
+    <>
+      {/* <div className="form-myaccount">
         <h1>Mettre à jour mon profil</h1>
         <form onSubmit={handleForm} className="Account-form">
           <div className="form-group required">
             <label htmlFor="InputStatus" className="control-label">
               Vous êtes:
             </label>
-            <div id="InputStatus">
-              <Radiotogglebuttons
-                status={status}
-                setStatus={handleStatusClick}
-              />
-            </div>
-          </div>
+            <div id="InputStatus">{radioButtons}</div>
+          </div> */}
           <div className="form-group required">
             <label htmlFor="InputPrenom" className="control-label">
               Prénom
@@ -255,7 +262,7 @@ function Formstudentaccount(props) {
               id="InputCV"
             />
           </div>
-          <div className="button-group">
+          {/* <div className="button-group">
             <button
               type="submit"
               className="btn text-danger"
@@ -270,10 +277,10 @@ function Formstudentaccount(props) {
             >
               Enregistrer
             </button>
-          </div>
-        </form>
-      </div>
-    </div>
+          </div> */}
+        {/* </form> */}
+      {/* // </div> */}
+    </>
   );
 }
 

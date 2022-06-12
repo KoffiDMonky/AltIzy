@@ -69,6 +69,11 @@ h1{
   border-color: var(--main-orange);
 }
 
+.btn-outline-info {
+  color: var(--main-blue);
+  border-color: var(--main-blue);
+}
+
 .btn-check:active+.btn-outline-warning, .btn-check:checked+.btn-outline-warning, .btn-outline-warning.active, .btn-outline-warning.dropdown-toggle.show, .btn-outline-warning:active {
   color: #fff;
   background-color: var(--main-orange);

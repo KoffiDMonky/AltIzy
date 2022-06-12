@@ -1,10 +1,11 @@
-import React, { useState, useMemo, useRef } from "react";
+import React, { useState, useMemo, useRef, useEffect, useContext } from "react";
+import { UserContext } from "../../context/userContext";
 import "./matching.css";
 import TinderCard from "react-tinder-card";
 import Likedislikemodule from "./LikeDislikeModule";
-import domaine from "./../../images/Icônes/altizy-domaine-bleu.png";
-import pin from "./../../images/Icônes/altizy-localisation-bleu.png";
-import offre from "./../../images/Icônes/altizy-personne-bleu.png";
+// import domaine from "./../../images/Icônes/altizy-domaine-bleu.png";
+// import pin from "./../../images/Icônes/altizy-localisation-bleu.png";
+// import offre from "./../../images/Icônes/altizy-personne-bleu.png";
 import Card from "./Card";
 // import alex from "./../../images/alex.jpg";
 // import johanna from "./../../images/johanna.jpg";
@@ -21,9 +22,26 @@ import Card from "./Card";
 // ];
 
 function Matchmodule(props) {
+
+  const { idCurrentUser } = useContext(UserContext);
+
   const annonces = props.annonces;
   const [currentIndex, setCurrentIndex] = useState(annonces.length - 1);
   const [lastDirection, setLastDirection] = useState();
+  const [userMatch, setUserMatch ] = useState([]);
+
+  console.log(idCurrentUser);
+
+  const userMatchList = id => {
+    fetch(`http://127.0.0.1:8000/api/correspondances.json?idEtudiantCible=${id}`)
+    .then((res) => res.json())
+    .then((resultat) => {
+      console.log(resultat)
+      setUserMatch(resultat)
+    })
+  }
+
+
 
   const currentIndexRef = useRef(currentIndex);
 
@@ -41,16 +59,16 @@ function Matchmodule(props) {
   };
 
   const canSwipe = currentIndex >= 0;
-  const canGoBack = currentIndex < annonces.length - 1;
 
   // Défini la dernière direction et diminuer l'index actuel
   const swiped = (direction, nameToDelete, index) => {
     setLastDirection(direction);
     updateCurrentIndex(index - 1);
 
-    //TODO: Finir de gérer les match une fois qu'il y aura plus de data dans la BDD
+    //TODO: Finir de gérer les matchs une fois qu'il y aura plus de data dans la BDD
     if (direction === "right") {
       console.log("Controle si match existant + passage à true");
+
     }
 
     // console.log(direction);
@@ -94,11 +112,15 @@ function Matchmodule(props) {
     </TinderCard>
   ));
 
+  useEffect(() => {
+    userMatchList(idCurrentUser)
+  }, []);
+
   return (
     <div className="match-module">
       <div className="card-container">
-        {cardStack}
         <p>Plus d'offres, reviens plustard !</p>
+        {cardStack}
       </div>
 
       <Likedislikemodule

@@ -8,37 +8,37 @@
 
 .match-module {
     position: absolute;
-    left: 37%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
     height: 450px;
-    /* top: 5% */
+
 }
 
 
 .card-container {
     width: var(--card-width);
-    height: var(--card-height);
-    margin: 35px auto;
+    min-height: var(--card-height);
     border-radius: 6px;
 }
 
 .card-container p {
-position: relative;
-top: 50%;
-font-size: 30px;
-text-align: center;
-color: rgb(196, 192, 192);
-z-index: 0;
+    position: relative;
+    top: 50%;
+    font-size: 30px;
+    text-align: center;
+    justify-content: center;
+    color: rgb(196, 192, 192);
+    z-index: 0;
 
 }
 
 .card {
     position: absolute;
     top: 0;
-    z-index: 100;
     width: var(--card-width);
     height: var(--card-height);
-    margin: 35px auto;
-    /* border: solid 1px var(--main-violet); */
     border-radius: 6px;
     cursor: pointer;
 }
@@ -55,6 +55,7 @@ z-index: 0;
     top: 23%;
     height: 80%;
 }
+
 .card-background .informations .nom-entreprise {
     font-size: 25px;
     font-weight: 500;
@@ -65,6 +66,7 @@ z-index: 0;
     margin-bottom: 5px;
 
 }
+
 .card-background .informations .auteur {
     font-size: 25px;
     font-weight: 500;
@@ -72,8 +74,8 @@ z-index: 0;
     text-align: center;
     background-color: #2B4999;
     color: #f6f6f6
-
 }
+
 .card-background .informations .resume {
 
     display: flex;
@@ -83,6 +85,7 @@ z-index: 0;
     text-align: left;
 
 }
+
 .card-background .informations .res {
     display: flex;
     flex-direction: row;
@@ -90,36 +93,37 @@ z-index: 0;
     align-items: center;
 }
 
-.adresse-entreprise .icon{
+.adresse-entreprise .icon {
     position: relative;
     left: 4px;
-} 
-.adresse-entreprise .texte{
+}
+
+.adresse-entreprise .texte {
     position: relative;
     left: 10px;
-} 
+}
 
 
-.card-background .informations{
+.card-background .informations {
     position: relative;
     padding: 10px;
     font-size: 15px;
     font-weight: 500;
 }
 
-.card-background .informations .titre{
- font-size: 25px;
- font-weight: 600;
- text-align: center;
- line-height: 20px;
+.card-background .informations .titre {
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 20px;
 }
 
-.card-background .informations .description{
- font-size: 20px;
- text-align: center;
- line-height: 35px;
- text-align: justify;
- padding: 5px 30px;
+.card-background .informations .description {
+    font-size: 20px;
+    text-align: center;
+    line-height: 20px;
+    text-align: justify;
+    padding: 5px 30px;
 }
 
 .informations .icon {
@@ -152,15 +156,43 @@ z-index: 0;
     .match-module {
         left: 25%;
     }
-  }
+}
 
 @media screen and (max-width: 1180px) {
     .match-module {
         left: 17%;
     }
-  }
+}
+
 @media screen and (max-width: 1040px) {
     .match-module {
         left: 10%;
     }
-  }
+}
+
+@media screen and (max-width: 360px) {
+
+    :root {
+
+        --card-width: 250px;
+    }
+
+    .card-background .informations .nom-entreprise{
+        width: 70%;
+    }
+    .card-background .informations .auteur{
+        width: 70%;
+    }
+    .card-background .informations .description{
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .chat-window {
+        position: absolute;
+        left: 3%;
+        bottom: 29%;
+    }
+
+
+}

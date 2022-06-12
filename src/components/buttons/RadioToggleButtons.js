@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Radiotogglebuttons(props) {
   const setStatus = props.setStatus;
-  const addInputs = props.addInputs;
+  const color = props.color;
 
+ 
   return (
     <div className="Radio-toggle-buttons-group ms-5">
       <input
@@ -15,7 +16,7 @@ function Radiotogglebuttons(props) {
         onChange={setStatus}
       />
       <label
-        className="btn btn-outline-warning ms-3"
+        className={`btn ${color} ms-3`}
         htmlFor="btn-professionnel"
       >
         Professionnel
@@ -27,9 +28,9 @@ function Radiotogglebuttons(props) {
         name="options"
         id="btn-alternant"
         autoComplete="off"
-        onClick={setStatus}
+        onChange={setStatus}
       />
-      <label className="btn btn-outline-warning ms-3" htmlFor="btn-alternant">
+      <label className={`btn ${color} ms-3`} htmlFor="btn-alternant">
         Alternant
       </label>
 
@@ -39,10 +40,10 @@ function Radiotogglebuttons(props) {
         name="options"
         id="btn-stagiaire"
         autoComplete="off"
-        onClick={setStatus}
+        onChange={setStatus}
         
       />
-      <label className="btn btn-outline-warning ms-3" htmlFor="btn-stagiaire">
+      <label className={`btn ${color} ms-3`} htmlFor="btn-stagiaire">
         Stagiaire
       </label>
     </div>

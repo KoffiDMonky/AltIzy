@@ -31,18 +31,6 @@ function Navbar() {
           <img style={{ height: "86px" }} src={logo} alt="logo" />
         </Link>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
         <div className="menu1">
           {!currentUser && <Button label="Présentation " url="/" />}
 

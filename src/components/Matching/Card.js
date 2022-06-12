@@ -3,6 +3,7 @@ import "./matching.css";
 import domaine from "./../../images/Icônes/altizy-domaine-bleu.png";
 import pin from "./../../images/Icônes/altizy-localisation-bleu.png";
 import offre from "./../../images/Icônes/altizy-personne-bleu.png";
+import ojc from "./../../images/entreprises/ojc.png"
 
 
 
@@ -16,6 +17,8 @@ function Card(props) {
     const typeContrat = props.typeContrat;
     const intitule = props.intitule;
     const description = props.description;
+
+    console.log(photo);
 
   return (
     <div

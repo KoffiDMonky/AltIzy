@@ -10,6 +10,9 @@ import PrivateHome from './pages/Private/PrivateHome/PrivateHome';
 import Myaccount from './pages/Private/PrivateMyAccount/MyAccount';
 import Footer from './components/Footer/Footer';
 import MyApplication from './pages/Private/PrivateMyAccount/MyApplication';
+import MentionsLegales from './pages/conditions/MentionsLegales';
+import Cookies from './pages/conditions/Cookies';
+import PolitiqueDeConfidentialite from './pages/conditions/PolitiqueDeConfidentialite';
 
 
 function App() {
@@ -25,6 +28,9 @@ function App() {
           <Route path="/private/private-myapplication" element={<MyApplication />}/>
           <Route path="/private/private-myaccount" element={<Myaccount />}/>
         </Route>
+        <Route path="/mentions-legales" element={<MentionsLegales/>} />
+        <Route path="/cookies" element={<Cookies/>} />
+        <Route path="/politique-de-confidentialite" element={<PolitiqueDeConfidentialite/>} />
       </Routes>
       <Footer/>
     </>

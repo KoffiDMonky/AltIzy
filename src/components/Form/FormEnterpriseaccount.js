@@ -3,13 +3,9 @@ import Radiotogglebuttons from "./../buttons/RadioToggleButtons";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./../../context/userContext";
 
-import * as api from "./../../api-service"
-
+import * as api from "./../../api-service";
 
 function Formenterpriseaccount(props) {
-  //Permets de déterminer le statut de l'utilisateur: Etudiant (alternant / stagiare) ou Entreprise
-  const status = props.status;
-
   //On instantie useNavigate
   const navigate = useNavigate();
 
@@ -18,9 +14,9 @@ function Formenterpriseaccount(props) {
 
   //id de l'utilisateur courant
   const id = idCurrentUser;
-  console.log("id", id);
-  //Fonction permettant de changer de formulaire en fonction du statut de l'utilisateur: Etudiant ou entreprise
-  const handleStatusClick = props.handleStatusClick;
+
+  //Composant bouton radio
+  const radioButtons = props.radioButtons;
 
   //On créé un objet "initialUserData" json qui servira pour le POST des données concernant l'entreprise via l'API REST
   const initialUserData = {
@@ -47,7 +43,8 @@ function Formenterpriseaccount(props) {
     e.preventDefault();
     console.log(userData);
 
-    api.postUser("http://127.0.0.1:8000/api/entreprises", userData )
+    api
+      .postUser("http://127.0.0.1:8000/api/entreprises", userData)
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
@@ -65,12 +62,7 @@ function Formenterpriseaccount(props) {
             <label htmlFor="InputStatus" className="control-label">
               Vous êtes:
             </label>
-            <div id="InputStatus">
-              <Radiotogglebuttons
-                status={status}
-                setStatus={handleStatusClick}
-              />
-            </div>
+            <div id="InputStatus">{radioButtons}</div>
           </div>
           <div className="form-group required">
             <label htmlFor="InputSiren" className="control-label">

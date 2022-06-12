@@ -11,8 +11,9 @@ export const UserContext = createContext();
 
 export function UserContextProvider(props) {
   //Partie utilisateur (création, identitfication de l'utilisateur)
-  const [currentUser, setCurrentUser] = useState();
-  const [idCurrentUser, setIdCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState('');
+  const [idCurrentUser, setIdCurrentUser] = useState('');
+  const [userToken, setUserToken ] = useState('');
   const [isStudent, setIsStudent] = useState(false);
   const [isEnterprise, setIsEnterprise] = useState(false);
   const [loadingData, setLoadindData] = useState(true);
@@ -21,6 +22,11 @@ export function UserContextProvider(props) {
   //Permet de récupérer l'identifiant de l'utilisateur courant dans le context
   const getIdUser = (id) => {
     setIdCurrentUser(id);
+  };
+
+  //Permet de récupérer le token de connexion à l'api de l'utilisateur courant dans le context
+  const getTokenUser = (token) => {
+    setUserToken(token);
   };
 
   //On instantie useNavigate
@@ -42,19 +48,16 @@ export function UserContextProvider(props) {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
 
-        // const operationType = result.operationType;
-
-        //TODO: Pour savoir si c'est la 1er connexion, vérifier que l'uid n'existe pas en BDD
-
         // On récupère les informations de l'utilisateur
         const user = result.user;
         const uid = user.uid;
         const login = user.email;
 
-        fetch(`http://127.0.0.1:8000/api/utilisateurs.json?uid=${uid}`) //On récupère l'utilisateur courant afin de récupérer son id en BDD
+        console.log(user);
+
+        fetch(`http://127.0.0.1:8000/api/users.json?uid=${uid}`) //On récupère l'utilisateur courant afin de récupérer son id en BDD
           .then((res) => res.json())
           .then((resultat) => {
-            console.log("lenght", resultat);
 
             if (resultat.length === 1) {
               const idUser = resultat[0].id; //On récupère l'identifiant de l'utilisateur
@@ -74,24 +77,27 @@ export function UserContextProvider(props) {
               }
 
               //On ferme la fenêtre modal et on redirige vers la page d'accueil privée
-              toggleModals("reset");
+              toggleModals("close");
               navigate("/private/private-home");
+
             } else if (resultat.length < 1) {
               //Création d'un objet json qui sera envoyer au backend avec fetch
               const userJson = {
                 login: login,
-                GoogleToken: token,
-                uid: uid,
+                password: '0000',
+                googleToken: token,
+                uid: uid
               };
 
               // Envoies des informations du nouvel utilisateur au backend via POST
-              fetch("http://127.0.0.1:8000/api/utilisateurs", {
+              fetch("http://127.0.0.1:8000/api/users", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/ld+json" },
                 body: JSON.stringify(userJson),
               })
                 .then((res) => res.json())
                 .then((result) => {
+                  console.log('utilisateur posté', result);
                   setIdCurrentUser(result.id); //On stock l'identifiant de l'utilisateur courant dans la variable d'état idCurrentUser
                 });
 
@@ -177,6 +183,8 @@ export function UserContextProvider(props) {
         signIn,
         currentUser,
         getIdUser,
+        getTokenUser,
+        userToken,
         idCurrentUser,
         signInWithGoogle,
         isStudent,

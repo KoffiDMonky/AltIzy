@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Modals.css";
 
 function SignUpModal() {
-  const { modalState, toggleModals, signUp, getIdUser } = useContext(UserContext); //On instantie useContext
+  const { modalState, toggleModals, signUp, getIdUser, getTokenUser } = useContext(UserContext); //On instantie useContext
   const navigate = useNavigate(); //On instantie useNavigate
   const [validation, setValidation] = useState(""); //Variable d'état permettant de déclencher un message d'erreur si le mail n'est pas valide ou déjà existant
   const [pwdOne, setPwdOne] = useState(""); //Variable d'état contenant le premier mot de passe saisie
@@ -56,24 +56,42 @@ function SignUpModal() {
           // Récupération du login, de l'uid et du token de connexion de l'utilisateur current
           const userLogin = userCredential.user.email;
           const uid = userCredential.user.uid;
-          const token = userCredential.user.accessToken;
+          const tokenGoogle = userCredential.user.accessToken;
 
           //Création d'un objet json qui sera envoyer au backend avec fetch
           const userJson = {
             login: userLogin,
-            GoogleToken: token,
             uid: uid,
+            password: tokenGoogle,
+            googleToken: tokenGoogle
           };
 
           // Envoies des informations du nouvel utilisateur au backend via POST
-          fetch("http://127.0.0.1:8000/api/utilisateurs", {
+          fetch("http://127.0.0.1:8000/api/users", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(userJson),
+            headers: { "Content-Type": "application/ld+json" },
+            body: JSON.stringify(userJson)
           }).then((response) => {
             response.json().then((object) => {
               //On récupère l'id autogénéré en base de l'utilisateur créé
               getIdUser(object.id);
+
+              const userJsonToken = {
+                login: userLogin,
+                password: tokenGoogle,
+              };
+
+              //Requête POST pour récupérer le token de connexion à l'api
+              fetch("http://127.0.0.1:8000/authentication_token", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(userJsonToken),
+              })
+              .then(response => response.json())
+                .then((token) => {
+
+                getTokenUser(token.token);
+              })
             });
           });
         })

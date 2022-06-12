@@ -10,16 +10,16 @@ function Footer() {
     <div className="footer">
       <div className="menu-footer">
         <div className="white-divider"></div>
-        <Link to="/" className="navbar-brand">
+        <Link to="/mentions-legales" className="navbar-brand">
           <div className="btn text-style-1">Mentions légales</div>
         </Link>
         <div className="white-divider"></div>
 
-        <Link to="/" className="navbar-brand">
+        <Link to="/cookies" className="navbar-brand">
           <div className="btn text-style-1">Cookies</div>
         </Link>
         <div className="white-divider"></div>
-        <Link to="/" className="navbar-brand">
+        <Link to="/politique-de-confidentialite" className="navbar-brand">
           <div className="btn text-style-1">Politique de confidentialité</div>
         </Link>
         <div className="white-divider"></div>
@@ -28,12 +28,12 @@ function Footer() {
         Copyright © 2021 Alt'izy <br></br>All rights reserved altizy.fr
       </div>
       <div className="social-media text-style-1">
-      <Link to="/" className="navbar-brand">
+      <a href="https://www.instagram.com/alt_izy/" target='_blank' className="navbar-brand">
         <img src={instagram} alt="instagram" />
-      </Link>
-      <Link to="/" className="navbar-brand">
+      </a>
+      <a href="https://www.linkedin.com/company/alt-izy" target='_blank' className="navbar-brand">
         <img src={linkedIn} alt="linkedIn" />
-      </Link>
+      </a>
       {/* <Link to="/" className="navbar-brand">
         <img src={tiktok} alt="instagram" />
       </Link> */}
