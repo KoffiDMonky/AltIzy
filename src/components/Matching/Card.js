@@ -18,12 +18,13 @@ function Card(props) {
     const intitule = props.intitule;
     const description = props.description;
 
-    console.log(photo);
 
   return (
     <div
       className="card-background"
-      style={{ backgroundImage: "url(" + photo + ")" }}
+       style={{ backgroundImage: "url(" + photo + ")"
+      //  , backgroundColor: 'red' 
+      }}
     >
       <div className="informations">
         <div className="nom-entreprise">{nomEntreprise}</div>

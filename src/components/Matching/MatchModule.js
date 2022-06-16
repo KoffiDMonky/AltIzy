@@ -3,23 +3,7 @@ import { UserContext } from "../../context/userContext";
 import "./matching.css";
 import TinderCard from "react-tinder-card";
 import Likedislikemodule from "./LikeDislikeModule";
-// import domaine from "./../../images/Icônes/altizy-domaine-bleu.png";
-// import pin from "./../../images/Icônes/altizy-localisation-bleu.png";
-// import offre from "./../../images/Icônes/altizy-personne-bleu.png";
 import Card from "./Card";
-// import alex from "./../../images/alex.jpg";
-// import johanna from "./../../images/johanna.jpg";
-// import manon from "./../../images/manon.jpg";
-// import chloe from "./../../images/chloe.jpg";
-// import agenor from "./../../images/agenor.jpg";
-
-// const users = [
-//   { id: 0, name: "Alex", photo: alex },
-//   { id: 1, name: "Johanna", photo: johanna },
-//   { id: 2, name: "Manon", photo: manon },
-//   { id: 3, name: "Chloé", photo: chloe },
-//   { id: 4, name: "Agénor", photo: agenor },
-// ];
 
 function Matchmodule(props) {
 
@@ -29,18 +13,6 @@ function Matchmodule(props) {
   const [currentIndex, setCurrentIndex] = useState(annonces.length - 1);
   const [lastDirection, setLastDirection] = useState();
   const [userMatch, setUserMatch ] = useState([]);
-
-  console.log(idCurrentUser);
-
-  const userMatchList = id => {
-    fetch(`http://127.0.0.1:8000/api/correspondances.json?idEtudiantCible=${id}`)
-    .then((res) => res.json())
-    .then((resultat) => {
-      console.log(resultat)
-      setUserMatch(resultat)
-    })
-  }
-
 
 
   const currentIndexRef = useRef(currentIndex);
@@ -70,8 +42,6 @@ function Matchmodule(props) {
       console.log("Controle si match existant + passage à true");
 
     }
-
-    // console.log(direction);
   };
 
   const outOfFrame = (name, idx) => {
@@ -112,9 +82,6 @@ function Matchmodule(props) {
     </TinderCard>
   ));
 
-  useEffect(() => {
-    userMatchList(idCurrentUser)
-  }, []);
 
   return (
     <div className="match-module">

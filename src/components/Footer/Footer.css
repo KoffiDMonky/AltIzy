@@ -38,6 +38,10 @@ margin-right: 0;
 
 @media screen and (max-width: 360px) {
 
+    .footer{
+        padding: 0.5rem;
+    }
+
     .navbar-brand .text-style-1 {
         font-size: 10px;
     }
@@ -45,6 +49,10 @@ margin-right: 0;
     .white-divider {
         width: 1px;
         height: 15px;
+    }
+
+    .navbar-brand img {
+        height: 40px;
     }
 
 }

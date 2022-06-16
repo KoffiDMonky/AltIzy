@@ -2,7 +2,7 @@
     --main-violet: #9B79B5;
     --main-blue: #2B4999;
     --main-orange: #F4974B;
-    --card-height: 80%;
+    --card-height: 85%;
     --card-width: 300px;
 }
 
@@ -13,7 +13,6 @@
     align-items: center;
     gap: 20px;
     height: 450px;
-
 }
 
 
@@ -51,13 +50,10 @@
     border-radius: 6px;
 }
 
-.card-background .informations {
-    top: 23%;
-    height: 80%;
-}
 
 .card-background .informations .nom-entreprise {
-    font-size: 25px;
+    /* text-size-adjust: auto; */
+    font-size: larger;
     font-weight: 500;
     width: 50%;
     text-align: center;
@@ -68,7 +64,7 @@
 }
 
 .card-background .informations .auteur {
-    font-size: 25px;
+    font-size: larger;
     font-weight: 500;
     width: 60%;
     text-align: center;
@@ -105,7 +101,11 @@
 
 
 .card-background .informations {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    height: 100%;
     padding: 10px;
     font-size: 15px;
     font-weight: 500;
@@ -127,7 +127,7 @@
 }
 
 .informations .icon {
-    height: 30px;
+    height: 20px;
 }
 
 .Likedislikemodule {
@@ -174,7 +174,11 @@
 
     :root {
 
-        --card-width: 250px;
+        --card-width: 235px;
+    }
+
+    .match-module {
+        margin: 8px;
     }
 
     .card-background .informations .nom-entreprise{
@@ -188,11 +192,11 @@
         line-height: 1.5;
     }
 
-    .chat-window {
+    /* .chat-window {
         position: absolute;
         left: 3%;
         bottom: 29%;
-    }
+    } */
 
 
 }

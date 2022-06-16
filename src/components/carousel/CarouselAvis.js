@@ -5,7 +5,7 @@ import student from "./../../images/student.jpg";
 
 function Carouselavis() {
   return (
-    <div className="background-section-orange">
+    <div className="background-section-orange" id="avis">
       <Carousel>
         <Carousel.Item>
           {/* <img className="d-block w-100" src={student} alt="First slide" /> */}

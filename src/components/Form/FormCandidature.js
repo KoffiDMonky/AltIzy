@@ -1,11 +1,11 @@
 import React, { useState, useCallback, useContext } from "react";
-import Radiotogglebuttons from "./../buttons/RadioToggleButtons";
+import Radiotogglebuttons from "../buttons/RadioToggleButtons";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "./../../context/userContext";
+import { UserContext } from "../../context/userContext";
 
-import * as api from "./../../api-service";
+import * as api from "../../api-service";
 
-function Formenterpriseaccount(props) {
+function FormCandidature(props) {
   //On instantie useNavigate
   const navigate = useNavigate();
 
@@ -14,9 +14,6 @@ function Formenterpriseaccount(props) {
 
   //id de l'utilisateur courant
   const id = idCurrentUser;
-
-  //Composant bouton radio
-  const radioButtons = props.radioButtons;
 
   //On créé un objet "initialUserData" json qui servira pour le POST des données concernant l'entreprise via l'API REST
   const initialUserData = {
@@ -44,7 +41,7 @@ function Formenterpriseaccount(props) {
     console.log(userData);
 
     api
-      .postUser("http://127.0.0.1:8000/api/entreprises", userData)
+      .postUser("http://127.0.0.1:8000/api/candidatures", userData)
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
@@ -57,51 +54,21 @@ function Formenterpriseaccount(props) {
     <>
           <div className="form-group required">
             <label htmlFor="InputSiren" className="control-label">
-              Numéro de SIREN
+              Intitulé de la candidature
             </label>
             <input
               required
               value={userData.siren}
               onChange={updateUserDataHandler("siren")}
-              type="number"
+              type="text"
               className="form-control"
               id="InputSiren"
               aria-describedby="siren"
-              placeholder="Entrez votre numéro de SIREN"
-            />
-          </div>
-          <div className="form-group required">
-            <label htmlFor="InputNomSociete" className="control-label">
-              Nom de la société
-            </label>
-            <input
-              required
-              value={userData.nom}
-              onChange={updateUserDataHandler("nom")}
-              type="text"
-              className="form-control"
-              id="InputNomSociete"
-              aria-describedby="Nom Societe"
-              placeholder="Entrez le nom de votre société"
-            />
-          </div>
-          <div className="form-group required">
-            <label htmlFor="InputEmailSociete" className="control-label">
-              Email
-            </label>
-            <input
-              required
-              value={userData.email}
-              onChange={updateUserDataHandler("email")}
-              type="email"
-              className="form-control"
-              id="InputEmailSociete"
-              aria-describedby="Email"
-              placeholder="Entrez votre email"
+              placeholder="Ex : Recherche alternance "
             />
           </div>
           <div className="form-group">
-            <label htmlFor="InputLogo">Logo de votre société </label>
+            <label htmlFor="InputLogo">Photo de la candidature </label>
             <br></br>
             <input
               value={userData.photo}
@@ -111,9 +78,40 @@ function Formenterpriseaccount(props) {
               id="InputLogo"
             />
           </div>
+
+          <div className="form-group required">
+            <label htmlFor="InputNomSociete" className="control-label">
+              Type de contrat recherché
+            </label>
+            <input
+              required
+              value={userData.nom}
+              onChange={updateUserDataHandler("nom")}
+              type="text"
+              className="form-control"
+              id="InputNomSociete"
+              aria-describedby="Nom Societe"
+              placeholder="Ex : Alternance 1 an"
+            />
+          </div>
+          <div className="form-group required">
+            <label htmlFor="InputEmailSociete" className="control-label">
+              Description
+            </label>
+            <input
+              required
+              value={userData.email}
+              onChange={updateUserDataHandler("email")}
+              type="email"
+              className="form-control"
+              id="InputEmailSociete"
+              aria-describedby="Email"
+              placeholder="Entrez une description"
+            />
+          </div>
           <div className="form-group required">
             <label htmlFor="InputInterlocuteur" className="control-label">
-              Interlocuteur
+              Domaine de recherche
             </label>
             <input
               required
@@ -123,26 +121,11 @@ function Formenterpriseaccount(props) {
               className="form-control"
               id="InputInterlocuteur"
               aria-describedby="Interlocuteur"
-              placeholder="Entrez le nom de l'interlocuteur principal"
+              placeholder="Ex : informatique"
             />
-          </div>
-
-          <div className="form-group required">
-            <label htmlFor="InputDescriptionSociete" className="control-label">
-              Description de la société
-            </label>
-            <textarea
-              required
-              value={userData.description}
-              onChange={updateUserDataHandler("description")}
-              className="form-control"
-              id="InputDescriptionSociete"
-              placeholder="Présentez votre société succinctement"
-              rows="3"
-            ></textarea>
           </div>
     </>
   );
 }
 
-export default Formenterpriseaccount;
+export default FormCandidature;

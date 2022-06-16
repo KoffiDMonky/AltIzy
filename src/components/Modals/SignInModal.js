@@ -3,10 +3,11 @@ import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
 import "./Modals.css";
 import Googlesigninbutton from "../buttons/GoogleSignInButton";
+
 // import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 function SignInModal() {
-  const { modalState, toggleModals, signIn, getIdUser, getTokenUser } =
+  const { modalState, toggleModals, signIn } =
     useContext(UserContext); //On instantie useContext
   const navigate = useNavigate(); //On instantie useNavigate
 
@@ -38,38 +39,20 @@ function SignInModal() {
           const token = userCredential.user.accessToken;
 
 
-          fetch(`http://127.0.0.1:8000/api/users.json?uid=${uid}`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/ld+json",
-              // Authorization:
-              //   "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTQ4MDg5ODUsImV4cCI6MTY1NDgxMjU4NSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdCJ9.Vid_u5C0LivpMULXbE-cJ-fqZIEnlK0Axzx-TrcwRP0P0emwtnHUAGga1X9pO6hlcohROPSmpGtQ74DHa1e1HRDPsz0732iYzlnpmqGKINbDpGfNvDfMsPNMtu2Rx6JKexqSMKu4sFW-PYMdx6CZEf_KV48vRiM8ehR3D1ZpEUMwUm2gmm1uhVp-wq6EiPBCDu0huIwyQ1Zv0GEvA8PlbTxU_5OyNEA3bRg9r9sIEBNOq9KOx27CPzaGf1MUNmBM5tOIT2QeTZezXG0CW6p_hYZiqFdsWRG5KwMt4XsaeMQkhoPH6wI8Fyk0fBgRZxX_iCQ2r5SrRw92A9iIFw6_9zDNampl-ZXj6bH_PJwlkem0m5IcBeGzxHB-Vzoz5C1afZNLVCwtEuhUQ6rIQdVbVNazPrp4BF286WoOksogBDBKx-BAMRYRDaT5Iud-dZE5b0NADJfqQwdJcK9kYsW4MJwHvw6KDcZPAxntf4HIskYuBhypXGMZfyWD3kPS7Fdz71ZpweF9mBdUUdLDC7_YkKfpxQFqDAS83G0xI6w9rIQvp635lH4jjPd9uPvacYNBhsNTGCbYD8ko_4mFo1eDUbCCfx6Vfl2GGjFZj8LO9awFEo0YArpvd7As8G1FyCNP9EVfBwNWVi4xckHNkqrt8xqULcCzFC7KLelF3euDcVQ",
-            },
-          })
-            .then((res) => res.json())
-            .then((result) => {
+          // fetch(`http://127.0.0.1:8000/api/users.json?uid=${uid}`, {
+          //   method: "GET",
+          //   headers: {
+          //     "Content-Type": "application/ld+json",
+          //     // Authorization:
+          //     //   "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2NTQ4MDg5ODUsImV4cCI6MTY1NDgxMjU4NSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdCJ9.Vid_u5C0LivpMULXbE-cJ-fqZIEnlK0Axzx-TrcwRP0P0emwtnHUAGga1X9pO6hlcohROPSmpGtQ74DHa1e1HRDPsz0732iYzlnpmqGKINbDpGfNvDfMsPNMtu2Rx6JKexqSMKu4sFW-PYMdx6CZEf_KV48vRiM8ehR3D1ZpEUMwUm2gmm1uhVp-wq6EiPBCDu0huIwyQ1Zv0GEvA8PlbTxU_5OyNEA3bRg9r9sIEBNOq9KOx27CPzaGf1MUNmBM5tOIT2QeTZezXG0CW6p_hYZiqFdsWRG5KwMt4XsaeMQkhoPH6wI8Fyk0fBgRZxX_iCQ2r5SrRw92A9iIFw6_9zDNampl-ZXj6bH_PJwlkem0m5IcBeGzxHB-Vzoz5C1afZNLVCwtEuhUQ6rIQdVbVNazPrp4BF286WoOksogBDBKx-BAMRYRDaT5Iud-dZE5b0NADJfqQwdJcK9kYsW4MJwHvw6KDcZPAxntf4HIskYuBhypXGMZfyWD3kPS7Fdz71ZpweF9mBdUUdLDC7_YkKfpxQFqDAS83G0xI6w9rIQvp635lH4jjPd9uPvacYNBhsNTGCbYD8ko_4mFo1eDUbCCfx6Vfl2GGjFZj8LO9awFEo0YArpvd7As8G1FyCNP9EVfBwNWVi4xckHNkqrt8xqULcCzFC7KLelF3euDcVQ",
+          //   },
+          // })
+          //   .then((res) => res.json())
+          //   .then((result) => {
 
-              getIdUser(result[0].id)
+          //     getIdUser(result[0].id)
 
-              console.log('result SignIn',result);
-              // const userJsonToken = {
-              //   login: result[0].login,
-              //   password: result[0].googleToken
-              // };
-    
-
-              // //Requête POST pour récupérer le token de connexion à l'api
-              // fetch("http://127.0.0.1:8000/authentication_token", {
-              //   method: "POST",
-              //   headers: { "Content-Type": "application/ld+json" },
-              //   body: JSON.stringify(userJsonToken),
-              // })
-              //   .then((response) => response.json())
-              //   .then((token) => {
-
-              //     getTokenUser(token.token);
-              //   });
-            });
+          //   });
         })
         .catch((error) => {
           const errorCode = error.code;

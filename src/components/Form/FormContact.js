@@ -1,16 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import Radiotogglebuttons from "../buttons/RadioToggleButtons";
 import "./Form.css";
 
 function Formcontact() {
+
+  //Variable d'état définissant la couleur des boutons radio en fonction du type
+  const [color, setColor] = useState("btn-outline-info");
+  const [status, setStatus] = useState("alternant");
+
+  const handleStatusClick = (e) => {
+    //Récupère l'identifiant du bouton cliqué
+    const idBoutonRadio = e.target.id;
+
+    console.log(idBoutonRadio);
+
+    //On affiche un formulaire différent en fonction que l'on soit étudiant ou entreprise
+    switch (idBoutonRadio) {
+      case "btn-professionnel":
+        setStatus("professionnel");
+        console.log('coucou');
+        setColor("btn-outline-info");
+        break;
+      case "btn-alternant":
+        setStatus("alternant");
+        setColor("btn-outline-warning");
+        break;
+      case "btn-stagiaire":
+        setStatus("stagiaire");
+        setColor("btn-outline-warning");
+        break;
+
+      default:
+        setStatus("alternant");
+        setColor("btn-outline-warning");
+        break;
+    }
+  };
+
+
   return (
-    <div className="form-contact">
+    <div className="form-contact" id="contact">
       <h1>Nous contacter</h1>
       <form>
         <div className="form-group">
           <label htmlFor="InputStatus">Vous êtes:</label>
           <div id="InputStatus">
-            <Radiotogglebuttons />
+            <Radiotogglebuttons color={color} status={status} setStatus={handleStatusClick}/>
           </div>
         </div>
         <div className="form-group">

@@ -32,13 +32,13 @@ function Navbar() {
         </Link>
 
         <div className="menu1">
-          {!currentUser && <Button label="Présentation " url="/" />}
+          {!currentUser && <Button label="Présentation " href="#presentation" />}
 
-          {!currentUser && <Button label="Équipe" url="/" />}
+          {!currentUser && <Button label="Équipe" href="#equipe" />}
 
-          {!currentUser && <Button label="Avis" url="/" />}
+          {!currentUser && <Button label="Avis" href="#avis" />}
 
-          {!currentUser && <Button label="Contact" url="/" />}
+          {!currentUser && <Button label="Contact" href="#contact" />}
         </div>
       </div>
 

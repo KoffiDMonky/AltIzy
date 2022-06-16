@@ -28,15 +28,22 @@ function Footer() {
         Copyright © 2021 Alt'izy <br></br>All rights reserved altizy.fr
       </div>
       <div className="social-media text-style-1">
-      <a href="https://www.instagram.com/alt_izy/" target='_blank' className="navbar-brand">
-        <img src={instagram} alt="instagram" />
-      </a>
-      <a href="https://www.linkedin.com/company/alt-izy" target='_blank' className="navbar-brand">
-        <img src={linkedIn} alt="linkedIn" />
-      </a>
-      {/* <Link to="/" className="navbar-brand">
-        <img src={tiktok} alt="instagram" />
-      </Link> */}
+        <a
+          href="https://www.instagram.com/alt_izy/"
+          target="_blank"
+          rel="noopener"
+          className="navbar-brand"
+        >
+          <img src={instagram} alt="instagram" />
+        </a>
+        <a
+          href="https://www.linkedin.com/company/alt-izy"
+          target="_blank"
+          rel="noopener"
+          className="navbar-brand"
+        >
+          <img src={linkedIn} alt="linkedIn" />
+        </a>
       </div>
     </div>
   );

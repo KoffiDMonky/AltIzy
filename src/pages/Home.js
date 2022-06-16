@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import Carouselavis from "../components/carousel/CarouselAvis";
 import Formcontact from "../components/Form/FormContact";
 import "./Home.css";
@@ -8,7 +8,7 @@ function Home() {
   return (
     <div className="public-home">
       <div className="welcome-banner"></div>
-      <div className="section-row">
+      <div className="section-row" id="presentation">
         <div className="content-image1"></div>
         <div className="content-text1">
           <p>
@@ -24,7 +24,7 @@ function Home() {
         </div>
       </div>
 
-      <div className="section-column">
+      <div className="section-column" id="equipe">
         <div className="title-image">
           <div className="title">
             <h1>
