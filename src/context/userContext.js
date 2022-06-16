@@ -5,7 +5,7 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../firebase-config";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 export const UserContext = createContext();
 
@@ -45,6 +45,19 @@ export function UserContextProvider(props) {
     createUserWithEmailAndPassword(auth, email, pwd);
   //Méthode de connexion d'un utilisateur par mail et mots de passe
   const signIn = (email, pwd) => signInWithEmailAndPassword(auth, email, pwd);
+
+  //Méthode pour envoyer un mail de réinitialisation de mot de passe
+  const sendForgotPassword = (email) => {
+
+    console.log("email de réinitialisation envoyé à l'adresse mail " + email);
+    sendPasswordResetEmail(auth, email)
+        .then(() => {
+            alert("email de réinitialisation envoyé à l'adresse mail " + email);
+        })
+        .catch(function (e) {
+            console.log(e);
+        });
+};
 
   //Méthode de connexion d'un utilisateur avec son compte google
   const signInWithGoogle = () =>
@@ -138,7 +151,8 @@ export function UserContextProvider(props) {
         signInWithGoogle,
         isStudent,
         isEnterprise,
-        getUserInformation
+        getUserInformation,
+        sendForgotPassword
       }}
     >
       {!loadingData && props.children}
