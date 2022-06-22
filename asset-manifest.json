@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.638ca47a.css",
+    "main.js": "/static/js/main.863e5d6d.js",
+    "static/media/student.png": "/static/media/student.f9eed4e90b0621bbd171.png",
+    "static/media/alex.jpg": "/static/media/alex.777db3cee7868a47c7d5.jpg",
+    "static/media/team_altizy2.png": "/static/media/team_altizy2.3446a904f69c231c5a82.png",
+    "static/media/student.jpg": "/static/media/student.923ef0e3928e3b95a3a9.jpg",
+    "static/media/cover_altizy2.png": "/static/media/cover_altizy2.ba0c1284e5a48965aa63.png",
+    "static/media/lesbottes.png": "/static/media/lesbottes.8bc60322c10d67ea6692.png",
+    "static/media/ojc.png": "/static/media/ojc.ded8e3c79e4fe71ca2f1.png",
+    "static/media/ubisoft.png": "/static/media/ubisoft.d05d11f549a41d1206d8.png",
+    "index.html": "/index.html",
+    "main.638ca47a.css.map": "/static/css/main.638ca47a.css.map",
+    "main.863e5d6d.js.map": "/static/js/main.863e5d6d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.638ca47a.css",
+    "static/js/main.863e5d6d.js"
+  ]
+}
